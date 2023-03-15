@@ -1,4 +1,6 @@
 import 'package:best_flutter_ui_templates/fitness_app/models/tabIcon_data.dart';
+import 'package:best_flutter_ui_templates/fitness_app/screens/donation/donation.dart';
+import 'package:best_flutter_ui_templates/fitness_app/screens/volunteering/volunteering.dart';
 import 'package:best_flutter_ui_templates/fitness_app/training/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
@@ -79,27 +81,74 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
           tabIconsList: tabIconsList,
           addClick: () {},
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
-              animationController?.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  tabBody =
-                      MyDiaryScreen(animationController: animationController);
+            switch (index) {
+              case 0:
+                animationController?.reverse().then<dynamic>((data) {
+                  if (!mounted) {
+                    return;
+                  }
+                  setState(() {
+                    tabBody =
+                        MyDiaryScreen(animationController: animationController);
+                  });
                 });
-              });
-            } else if (index == 1 || index == 3) {
-              animationController?.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  tabBody =
-                      TrainingScreen(animationController: animationController);
+                break;
+              case 1:
+                animationController?.reverse().then<dynamic>((data) {
+                  if (!mounted) {
+                    return;
+                  }
+                  setState(() {
+                    tabBody = TrainingScreen(
+                        animationController: animationController);
+                  });
                 });
-              });
+                break;
+              case 2:
+                animationController?.reverse().then<dynamic>((data) {
+                  if (!mounted) {
+                    return;
+                  }
+                  setState(() {
+                    tabBody =
+                        Volunteering(animationController: animationController);
+                  });
+                });
+                break;
+              case 3:
+                animationController?.reverse().then<dynamic>((data) {
+                  if (!mounted) {
+                    return;
+                  }
+                  setState(() {
+                    tabBody =
+                        Donation(animationController: animationController);
+                  });
+                });
+                break;
             }
+
+            // if (index == 0 || index == 2) {
+            //   animationController?.reverse().then<dynamic>((data) {
+            //     if (!mounted) {
+            //       return;
+            //     }
+            //     setState(() {
+            //       tabBody =
+            //           MyDiaryScreen(animationController: animationController);
+            //     });
+            //   });
+            // } else if (index == 1 || index == 3) {
+            //   animationController?.reverse().then<dynamic>((data) {
+            //     if (!mounted) {
+            //       return;
+            //     }
+            //     setState(() {
+            //       tabBody =
+            //           TrainingScreen(animationController: animationController);
+            //     });
+            //   });
+            // }
           },
         ),
       ],
