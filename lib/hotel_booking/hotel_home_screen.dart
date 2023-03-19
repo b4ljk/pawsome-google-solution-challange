@@ -382,7 +382,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Icon(FontAwesomeIcons.magnifyingGlass,
+                  child: Icon(FontAwesomeIcons.search,
                       size: 20,
                       color: HotelAppTheme.buildLightTheme().backgroundColor),
                 ),
@@ -586,7 +586,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       onTap: () {},
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(FontAwesomeIcons.locationDot),
+                        child: Icon(FontAwesomeIcons.searchLocation),
                       ),
                     ),
                   ),

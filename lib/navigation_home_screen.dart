@@ -3,9 +3,10 @@ import 'package:best_flutter_ui_templates/custom_drawer/drawer_user_controller.d
 import 'package:best_flutter_ui_templates/custom_drawer/home_drawer.dart';
 import 'package:best_flutter_ui_templates/feedback_screen.dart';
 import 'package:best_flutter_ui_templates/help_screen.dart';
-import 'package:best_flutter_ui_templates/home_screen.dart';
 import 'package:best_flutter_ui_templates/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'fitness_app/fitness_app_home_screen.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   @override
   void initState() {
     drawerIndex = DrawerIndex.HOME;
-    screenView = const MyHomePage();
+    screenView = FitnessAppHomeScreen();
     super.initState();
   }
 
@@ -53,7 +54,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       switch (drawerIndex) {
         case DrawerIndex.HOME:
           setState(() {
-            screenView = const MyHomePage();
+            screenView = FitnessAppHomeScreen();
           });
           break;
         case DrawerIndex.Help:

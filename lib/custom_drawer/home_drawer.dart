@@ -1,5 +1,10 @@
 import 'package:best_flutter_ui_templates/app_theme.dart';
+import 'package:best_flutter_ui_templates/components/my_elevated_button.dart';
+import 'package:best_flutter_ui_templates/fitness_app/screens/auth/auth.dart';
+import 'package:best_flutter_ui_templates/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
@@ -67,124 +72,192 @@ class _HomeDrawerState extends State<HomeDrawer> {
     bool isLightMode = brightness == Brightness.light;
     return Scaffold(
       backgroundColor: AppTheme.notWhite.withOpacity(0.5),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.only(top: 40.0),
-            child: Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  AnimatedBuilder(
-                    animation: widget.iconAnimationController!,
-                    builder: (BuildContext context, Widget? child) {
-                      return ScaleTransition(
-                        scale: AlwaysStoppedAnimation<double>(1.0 -
-                            (widget.iconAnimationController!.value) * 0.2),
-                        child: RotationTransition(
-                          turns: AlwaysStoppedAnimation<double>(Tween<double>(
-                                      begin: 0.0, end: 24.0)
-                                  .animate(CurvedAnimation(
-                                      parent: widget.iconAnimationController!,
-                                      curve: Curves.fastOutSlowIn))
-                                  .value /
-                              360),
-                          child: Container(
-                            height: 120,
-                            width: 120,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              boxShadow: <BoxShadow>[
-                                BoxShadow(
-                                    color: AppTheme.grey.withOpacity(0.6),
-                                    offset: const Offset(2.0, 4.0),
-                                    blurRadius: 8),
-                              ],
-                            ),
-                            child: ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(60.0)),
-                              child: Image.asset('assets/images/userImage.png'),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 4),
-                    child: Text(
-                      'Chris Hemsworth',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: isLightMode ? AppTheme.grey : AppTheme.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 4,
-          ),
-          Divider(
-            height: 1,
-            color: AppTheme.grey.withOpacity(0.6),
-          ),
-          Expanded(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.all(0.0),
-              itemCount: drawerList?.length,
-              itemBuilder: (BuildContext context, int index) {
-                return inkwell(drawerList![index]);
-              },
-            ),
-          ),
-          Divider(
-            height: 1,
-            color: AppTheme.grey.withOpacity(0.6),
-          ),
-          Column(
-            children: <Widget>[
-              ListTile(
-                title: Text(
-                  'Sign Out',
-                  style: TextStyle(
-                    fontFamily: AppTheme.fontName,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: AppTheme.darkText,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-                trailing: Icon(
-                  Icons.power_settings_new,
-                  color: Colors.red,
-                ),
-                onTap: () {
-                  onTapped();
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).padding.bottom,
-              )
-            ],
-          ),
-        ],
-      ),
+      body: drawerData(isLightMode),
     );
   }
 
-  void onTapped() {
-    print('Doing Something...'); // Print to console.
+  Future<void> onTapped() async {
+    await auth.signOut();
+    await GoogleSignIn().signOut();
+  }
+
+  Widget drawerData(bool isLightMode) {
+    return StreamBuilder<User?>(
+      stream: auth.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return userLoggedIn(isLightMode);
+        }
+        return Center(
+            // login button
+            child: Padding(
+          padding: const EdgeInsets.all(50.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 110,
+                height: 110,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(75),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/images/logo.jpg'),
+                  ),
+                ),
+              ),
+              Text(
+                'Pawsome',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              userLogin(),
+            ],
+          ),
+        ));
+      },
+    );
+  }
+
+  Widget userLogin() {
+    return Center(
+      child: MyElevatedButton(
+          borderRadius: BorderRadius.circular(12),
+          width: double.infinity,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AuthGate()),
+            );
+          },
+          child: Text('Login')),
+    );
+  }
+
+  Widget userLoggedIn(bool isLightMode) {
+    final User? user = auth.currentUser;
+
+    return (Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.only(top: 40.0),
+          child: Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                AnimatedBuilder(
+                  animation: widget.iconAnimationController!,
+                  builder: (BuildContext context, Widget? child) {
+                    return ScaleTransition(
+                      scale: AlwaysStoppedAnimation<double>(
+                          1.0 - (widget.iconAnimationController!.value) * 0.2),
+                      child: RotationTransition(
+                        turns: AlwaysStoppedAnimation<double>(
+                            Tween<double>(begin: 0.0, end: 24.0)
+                                    .animate(CurvedAnimation(
+                                        parent: widget.iconAnimationController!,
+                                        curve: Curves.fastOutSlowIn))
+                                    .value /
+                                360),
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                  color: AppTheme.grey.withOpacity(0.6),
+                                  offset: const Offset(2.0, 4.0),
+                                  blurRadius: 8),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(60.0)),
+                            child: Image.network(
+                              user!.photoURL ?? 'assets/images/logo.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 4),
+                  child: Text(
+                    user!.displayName ?? 'User name',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: isLightMode ? AppTheme.grey : AppTheme.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 4,
+        ),
+        Divider(
+          height: 1,
+          color: AppTheme.grey.withOpacity(0.6),
+        ),
+        Expanded(
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(0.0),
+            itemCount: drawerList?.length,
+            itemBuilder: (BuildContext context, int index) {
+              return inkwell(drawerList![index]);
+            },
+          ),
+        ),
+        Divider(
+          height: 1,
+          color: AppTheme.grey.withOpacity(0.6),
+        ),
+        Column(
+          children: <Widget>[
+            ListTile(
+              title: Text(
+                'Sign Out',
+                style: TextStyle(
+                  fontFamily: AppTheme.fontName,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                  color: AppTheme.darkText,
+                ),
+                textAlign: TextAlign.left,
+              ),
+              trailing: Icon(
+                Icons.power_settings_new,
+                color: Colors.red,
+              ),
+              onTap: () {
+                onTapped();
+              },
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom,
+            )
+          ],
+        ),
+      ],
+    ));
   }
 
   Widget inkwell(DrawerList listData) {
