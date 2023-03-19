@@ -17,10 +17,10 @@ class _AreaListViewState extends State<AreaListView>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   List<String> areaListData = <String>[
-    'assets/fitness_app/area1.png',
-    'assets/fitness_app/area2.png',
-    'assets/fitness_app/area3.png',
-    'assets/fitness_app/area1.png',
+    'assets/pawsome/dog.jpg',
+    'assets/pawsome/area2.png',
+    'assets/pawsome/area3.png',
+    'assets/pawsome/area1.png',
   ];
 
   @override
@@ -51,8 +51,7 @@ class _AreaListViewState extends State<AreaListView>
               child: Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: GridView(
-                  padding: const EdgeInsets.only(
-                      left: 16, right: 16, top: 16, bottom: 16),
+                  padding: const EdgeInsets.all(8.0),
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   children: List<Widget>.generate(
@@ -114,13 +113,10 @@ class AreaView extends StatelessWidget {
             transform: Matrix4.translationValues(
                 0.0, 50 * (1.0 - animation!.value), 0.0),
             child: Container(
+              clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 color: FitnessAppTheme.white,
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8.0),
-                    bottomLeft: Radius.circular(8.0),
-                    bottomRight: Radius.circular(8.0),
-                    topRight: Radius.circular(8.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(12.0)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: FitnessAppTheme.grey.withOpacity(0.4),
@@ -139,10 +135,25 @@ class AreaView extends StatelessWidget {
                   onTap: () {},
                   child: Column(
                     children: <Widget>[
+                      Expanded(
+                          child: Image.asset(
+                        imagepath!,
+                        fit: BoxFit.cover,
+                      )),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 16, left: 16, right: 16),
-                        child: Image.asset(imagepath!),
+                        padding: const EdgeInsets.only(
+                            left: 16, right: 16, top: 8, bottom: 8),
+                        child: Text(
+                          'Puppies',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: FitnessAppTheme.fontName,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            letterSpacing: 0.0,
+                            color: FitnessAppTheme.darkText,
+                          ),
+                        ),
                       ),
                     ],
                   ),

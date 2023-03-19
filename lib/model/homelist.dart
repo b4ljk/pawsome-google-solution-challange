@@ -19,7 +19,7 @@ class HomeList {
       navigateScreen: HotelHomeScreen(),
     ),
     HomeList(
-      imagePath: 'assets/fitness_app/fitness_app.png',
+      imagePath: 'assets/pawsome/fitness_app.png',
       navigateScreen: FitnessAppHomeScreen(),
     ),
     HomeList(
