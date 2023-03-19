@@ -79,7 +79,9 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
         ),
         BottomBarView(
           tabIconsList: tabIconsList,
-          addClick: () {},
+          addClick: () {
+            print('Add Clicked');
+          },
           changeIndex: (int index) {
             switch (index) {
               case 0:

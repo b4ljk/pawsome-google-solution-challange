@@ -1,3 +1,5 @@
+import 'package:best_flutter_ui_templates/components/shelter/shelter_card.dart';
+import 'package:best_flutter_ui_templates/components/shelter/shelter_data.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/body_measurement.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/glass_view.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/mediterranean_diet_view.dart';
@@ -56,18 +58,28 @@ class _DonationState extends State<Donation> with TickerProviderStateMixin {
   }
 
   void addAllListData() {
-    int count = 1;
-    listViews.add(
-      TitleView(
-        titleTxt: 'Donation',
-        subTxt: 'Donation',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    int count = 2;
+    final Animation<double> animation = Tween<double>(begin: 0.0, end: 1.0)
+        .animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
-                Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
+                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn)));
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Donation',
+    //     subTxt: 'Donation',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
+    listViews.add(ShelterItem(
+      animationController: widget.animationController,
+      animation: animation,
+      shelterData: ShelterData(),
+    ));
   }
 
   Future<bool> getData() async {
