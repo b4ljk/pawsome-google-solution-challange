@@ -1,0 +1,4 @@
+class Constants {
+  static String aboutUsText =
+      "Our team is made up of passionate animal lovers who are committed to making a difference. We believe that technology can be a powerful tool for good, and we're using it to create innovative solutions that help animals in a variety of ways.\n\nWhether it's through developing new apps and software to connect animals with loving homes, or using data analytics to identify and prevent animal abuse, we're always exploring new ways to help animals and improve their lives.\n\nAt the heart of our mission is a commitment to compassion and empathy. We believe that every animal deserves to be treated with kindness and respect, and we're working hard to create a world where animals are valued and protected.\n\nThank you for joining us on this journey. Together, we can make a difference and help create a better world for our furry friends.";
+}
