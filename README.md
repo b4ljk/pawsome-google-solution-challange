@@ -1,16 +1,7 @@
-# best_flutter_ui_templates
+# Pawsome - A simple, yet helpful app for our furry friends
 
-A new Flutter project.
+## What is Pawsome?
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Pawsome is a simple app that helps you to adopt a pet, find a pet sitter, and find a pet groomer.
+2. Pawsome gives you information about the pet you are interested in adopting.
+3. bla bla
