@@ -16,11 +16,11 @@ class AreaListView extends StatefulWidget {
 class _AreaListViewState extends State<AreaListView>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<String> areaListData = <String>[
-    'assets/pawsome/dog.jpg',
-    'assets/pawsome/area2.png',
-    'assets/pawsome/area3.png',
-    'assets/pawsome/area1.png',
+  List<List<String>> areaListData = <List<String>>[
+    ['assets/pawsome/dog.jpg', "Dogs"],
+    ['assets/pawsome/dog.jpg', "Cats"],
+    ['assets/pawsome/dog.jpg', "Fish"],
+    ['assets/pawsome/dog.jpg', "Reptiles"],
   ];
 
   @override
@@ -68,9 +68,10 @@ class _AreaListViewState extends State<AreaListView>
                       );
                       animationController?.forward();
                       return AreaView(
-                        imagepath: areaListData[index],
+                        imagepath: areaListData[index][0],
                         animation: animation,
                         animationController: animationController!,
+                        title: areaListData[index][1],
                       );
                     },
                   ),
@@ -96,12 +97,13 @@ class AreaView extends StatelessWidget {
     this.imagepath,
     this.animationController,
     this.animation,
+    required this.title,
   }) : super(key: key);
 
   final String? imagepath;
   final AnimationController? animationController;
   final Animation<double>? animation;
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -144,7 +146,7 @@ class AreaView extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             left: 16, right: 16, top: 8, bottom: 8),
                         child: Text(
-                          'Puppies',
+                          title,
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: FitnessAppTheme.fontName,
