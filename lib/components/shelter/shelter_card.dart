@@ -53,7 +53,7 @@ class ShelterItem extends StatelessWidget {
                         Column(
                           children: <Widget>[
                             AspectRatio(
-                              aspectRatio: 3,
+                              aspectRatio: 2,
                               child: Image.network(
                                 shelterData!.imagePath,
                                 fit: BoxFit.cover,
@@ -77,12 +77,14 @@ class ShelterItem extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: <Widget>[
-                                            Text(
-                                              shelterData!.titleTxt,
-                                              textAlign: TextAlign.left,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 12,
+                                            FittedBox(
+                                              fit: BoxFit.fitWidth,
+                                              child: Text(
+                                                shelterData.titleTxt,
+                                                textAlign: TextAlign.left,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                ),
                                               ),
                                             ),
                                             Row(

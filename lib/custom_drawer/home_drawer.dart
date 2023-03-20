@@ -184,10 +184,15 @@ class _HomeDrawerState extends State<HomeDrawer> {
                           child: ClipRRect(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(60.0)),
-                            child: Image.network(
-                              user!.photoURL ?? 'assets/images/logo.jpg',
-                              fit: BoxFit.cover,
-                            ),
+                            child: user?.photoURL != null
+                                ? Image.network(
+                                    user!.photoURL!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset(
+                                    'assets/images/logo.jpg',
+                                    fit: BoxFit.cover,
+                                  ),
                           ),
                         ),
                       ),
@@ -197,7 +202,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 4),
                   child: Text(
-                    user!.displayName ?? 'User name',
+                    user!.displayName ?? 'John Doe',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: isLightMode ? AppTheme.grey : AppTheme.white,
