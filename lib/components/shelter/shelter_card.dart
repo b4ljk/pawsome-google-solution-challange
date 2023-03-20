@@ -1,5 +1,5 @@
-import 'package:best_flutter_ui_templates/components/shelter/shelter_data.dart';
-import 'package:best_flutter_ui_templates/hotel_booking/hotel_app_theme.dart';
+import 'package:pawsome/components/shelter/shelter_data.dart';
+import 'package:pawsome/hotel_booking/hotel_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

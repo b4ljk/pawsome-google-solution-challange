@@ -4,10 +4,10 @@
 
 import 'dart:io';
 
-import 'package:best_flutter_ui_templates/components/my_elevated_button.dart';
-import 'package:best_flutter_ui_templates/navigation_home_screen.dart';
+import 'package:pawsome/components/my_elevated_button.dart';
+import 'package:pawsome/navigation_home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:best_flutter_ui_templates/main.dart';
+import 'package:pawsome/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';

@@ -1,5 +1,5 @@
-import 'package:best_flutter_ui_templates/app_theme.dart';
-import 'package:best_flutter_ui_templates/constants/longtext.dart';
+import 'package:pawsome/app_theme.dart';
+import 'package:pawsome/constants/longtext.dart';
 import 'package:flutter/material.dart';
 
 class About extends StatefulWidget {

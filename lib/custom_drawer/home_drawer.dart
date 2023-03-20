@@ -1,7 +1,7 @@
-import 'package:best_flutter_ui_templates/app_theme.dart';
-import 'package:best_flutter_ui_templates/components/my_elevated_button.dart';
-import 'package:best_flutter_ui_templates/fitness_app/screens/auth/auth.dart';
-import 'package:best_flutter_ui_templates/main.dart';
+import 'package:pawsome/app_theme.dart';
+import 'package:pawsome/components/my_elevated_button.dart';
+import 'package:pawsome/fitness_app/screens/auth/auth.dart';
+import 'package:pawsome/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';

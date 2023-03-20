@@ -1,5 +1,5 @@
-import 'package:best_flutter_ui_templates/app_theme.dart';
-import 'package:best_flutter_ui_templates/fitness_app/fitness_app_home_screen.dart';
+import 'package:pawsome/app_theme.dart';
+import 'package:pawsome/fitness_app/fitness_app_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'model/homelist.dart';
 

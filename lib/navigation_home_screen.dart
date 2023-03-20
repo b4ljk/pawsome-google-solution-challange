@@ -1,10 +1,10 @@
-import 'package:best_flutter_ui_templates/app_theme.dart';
-import 'package:best_flutter_ui_templates/custom_drawer/drawer_user_controller.dart';
-import 'package:best_flutter_ui_templates/custom_drawer/home_drawer.dart';
-import 'package:best_flutter_ui_templates/feedback_screen.dart';
-import 'package:best_flutter_ui_templates/fitness_app/screens/about/aboutus.dart';
-import 'package:best_flutter_ui_templates/help_screen.dart';
-import 'package:best_flutter_ui_templates/invite_friend_screen.dart';
+import 'package:pawsome/app_theme.dart';
+import 'package:pawsome/custom_drawer/drawer_user_controller.dart';
+import 'package:pawsome/custom_drawer/home_drawer.dart';
+import 'package:pawsome/feedback_screen.dart';
+import 'package:pawsome/fitness_app/screens/about/aboutus.dart';
+import 'package:pawsome/help_screen.dart';
+import 'package:pawsome/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'fitness_app/fitness_app_home_screen.dart';
