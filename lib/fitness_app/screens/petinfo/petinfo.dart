@@ -9,17 +9,21 @@ class PetInformation extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize:
-            Size(double.infinity, MediaQuery.of(context).size.height * 0.4),
+            Size(double.infinity, MediaQuery.of(context).size.height * 0.5),
         child: Stack(
           children: [
             Image.network(
               "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRPMKnq00NF_T7RusUNeLrSazRZM0S5O8_AOcw2iBTmYTxd3Q7uXf0sW41odpAKqSblKDMUMHGb8nZRo9g",
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text("Back")),
+            Padding(
+              padding:
+                  EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios)),
+            ),
           ],
         ),
       ),
