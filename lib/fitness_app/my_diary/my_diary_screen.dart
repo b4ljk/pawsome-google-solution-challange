@@ -1,3 +1,4 @@
+import 'package:pawsome/fitness_app/screens/shelter/feed.dart';
 import 'package:pawsome/fitness_app/ui_view/body_measurement.dart';
 import 'package:pawsome/fitness_app/ui_view/glass_view.dart';
 import 'package:pawsome/fitness_app/ui_view/mediterranean_diet_view.dart';
@@ -57,28 +58,19 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   }
 
   void addAllListData() {
-    const int count = 2;
+    listViews.add(Post(
+      snap: null,
+    ));
 
-    listViews.add(
-      TitleView(
-        titleTxt: 'Mediterranean diet',
-        subTxt: 'Details',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-    listViews.add(
-      MediterranesnDietView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
+    // listViews.add(
+    //   MediterranesnDietView(
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
     // listViews.add(
     //   TitleView(
     //     titleTxt: 'Meals today',
