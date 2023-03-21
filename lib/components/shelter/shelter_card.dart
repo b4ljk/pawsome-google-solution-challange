@@ -55,7 +55,7 @@ class ShelterItem extends StatelessWidget {
                             AspectRatio(
                               aspectRatio: 2,
                               child: Image.network(
-                                shelterData!.imagePath,
+                                shelterData.imagePath,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -102,7 +102,7 @@ class ShelterItem extends StatelessWidget {
                                                 ),
                                                 Expanded(
                                                   child: Text(
-                                                    '${shelterData!.dist} km to city',
+                                                    '${shelterData.dist} km to city',
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
@@ -128,7 +128,7 @@ class ShelterItem extends StatelessWidget {
                                           CrossAxisAlignment.end,
                                       children: <Widget>[
                                         Text(
-                                          shelterData!.subTxt,
+                                          shelterData.subTxt,
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -136,7 +136,7 @@ class ShelterItem extends StatelessWidget {
                                           ),
                                         ),
                                         Text(
-                                          shelterData!.other,
+                                          shelterData.other,
                                           style: TextStyle(
                                               fontSize: 10,
                                               color:

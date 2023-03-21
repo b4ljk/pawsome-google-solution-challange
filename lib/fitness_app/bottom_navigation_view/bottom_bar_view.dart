@@ -4,8 +4,8 @@ import 'package:pawsome/fitness_app/models/tabIcon_data.dart';
 import 'package:pawsome/main.dart';
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
-import '../models/tabIcon_data.dart';
+// import '../../main.dart';
+// import '../models/tabIcon_data.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView(
