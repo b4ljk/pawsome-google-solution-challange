@@ -18,9 +18,9 @@ class _AreaListViewState extends State<AreaListView>
   AnimationController? animationController;
   List<List<String>> areaListData = <List<String>>[
     ['assets/pawsome/dog.jpg', "Dogs"],
-    ['assets/pawsome/dog.jpg', "Cats"],
-    ['assets/pawsome/dog.jpg', "Fish"],
-    ['assets/pawsome/dog.jpg', "Reptiles"],
+    ['assets/pawsome/cat.jpg', "Cats"],
+    ['assets/pawsome/fish.jpg', "Fish"],
+    ['assets/pawsome/reptile.jpg', "Reptiles"],
   ];
 
   @override
