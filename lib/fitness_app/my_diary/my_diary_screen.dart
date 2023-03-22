@@ -58,9 +58,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   }
 
   void addAllListData() {
-    listViews.add(Post(
-      snap: null,
-    ));
+    listViews.add(Container());
 
     // listViews.add(
     //   MediterranesnDietView(
@@ -165,7 +163,11 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
             getAppBarUI(),
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 100.0),
+              child: Post(snap: null),
+            ),
           ],
         ),
       ),
