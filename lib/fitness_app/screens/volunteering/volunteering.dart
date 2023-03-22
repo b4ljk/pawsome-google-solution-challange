@@ -8,6 +8,7 @@ import 'package:pawsome/fitness_app/fitness_app_theme.dart';
 import 'package:pawsome/fitness_app/my_diary/meals_list_view.dart';
 import 'package:pawsome/fitness_app/my_diary/water_view.dart';
 import 'package:flutter/material.dart';
+import 'package:pawsome/main.dart';
 
 class Volunteering extends StatefulWidget {
   const Volunteering({Key? key, this.animationController}) : super(key: key);
@@ -250,6 +251,8 @@ class EnabledButton extends StatelessWidget {
       onPressed: () {},
       child: Text(text),
       style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all<Color>(HexColor("#6A88E5")),
           padding: MaterialStateProperty.all<EdgeInsets>(
               EdgeInsets.symmetric(horizontal: 50))),
     );

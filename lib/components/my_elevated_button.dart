@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pawsome/fitness_app/fitness_app_theme.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final BorderRadiusGeometry? borderRadius;
   final double? width;
   final double height;
-  final Gradient gradient;
   final VoidCallback? onPressed;
   final Widget child;
+  final Gradient gradient;
 
   const MyElevatedButton({
     Key? key,
@@ -15,7 +16,10 @@ class MyElevatedButton extends StatelessWidget {
     this.borderRadius,
     this.width,
     this.height = 44.0,
-    this.gradient = const LinearGradient(colors: [Colors.cyan, Colors.indigo]),
+    this.gradient = const LinearGradient(colors: [
+      FitnessAppTheme.nearlyDarkBlue,
+      FitnessAppTheme.gradientBlue,
+    ], begin: Alignment.topLeft, end: Alignment.bottomRight),
   }) : super(key: key);
 
   @override

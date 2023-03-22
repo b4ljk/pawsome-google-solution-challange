@@ -1,5 +1,6 @@
 import 'package:pawsome/fitness_app/models/tabIcon_data.dart';
 import 'package:pawsome/fitness_app/screens/donation/donation.dart';
+import 'package:pawsome/fitness_app/screens/post/addpost.dart';
 import 'package:pawsome/fitness_app/screens/volunteering/volunteering.dart';
 import 'package:pawsome/fitness_app/training/training_screen.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +81,12 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
         BottomBarView(
           tabIconsList: tabIconsList,
           addClick: () {
-            print('Add Clicked');
+            Navigator.push<dynamic>(
+              context,
+              MaterialPageRoute<dynamic>(
+                builder: (BuildContext context) => const AddPost(),
+              ),
+            );
           },
           changeIndex: (int index) {
             switch (index) {
