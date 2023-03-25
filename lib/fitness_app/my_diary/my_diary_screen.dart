@@ -164,10 +164,11 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
+            SafeArea(
+                child: Padding(
+              padding: EdgeInsets.only(top: AppBar().preferredSize.height),
               child: Post(snap: null),
-            ),
+            )),
           ],
         ),
       ),
