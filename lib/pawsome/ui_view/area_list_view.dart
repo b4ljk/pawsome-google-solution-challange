@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../fitness_app_theme.dart';
+import '../theming.dart';
 
 class AreaListView extends StatefulWidget {
   const AreaListView(

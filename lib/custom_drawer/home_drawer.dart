@@ -1,6 +1,6 @@
 import 'package:pawsome/app_theme.dart';
 import 'package:pawsome/components/my_elevated_button.dart';
-import 'package:pawsome/fitness_app/screens/auth/auth.dart';
+import 'package:pawsome/pawsome/screens/auth/auth.dart';
 import 'package:pawsome/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

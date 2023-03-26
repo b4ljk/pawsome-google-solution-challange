@@ -1,5 +1,5 @@
 import 'package:pawsome/design_course/home_design_course.dart';
-import 'package:pawsome/fitness_app/fitness_app_home_screen.dart';
+import 'package:pawsome/pawsome/homescreen.dart';
 import 'package:pawsome/hotel_booking/hotel_home_screen.dart';
 import 'package:pawsome/introduction_animation/introduction_animation_screen.dart';
 import 'package:flutter/widgets.dart';

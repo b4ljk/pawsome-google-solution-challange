@@ -1,5 +1,5 @@
-import 'package:pawsome/fitness_app/ui_view/wave_view.dart';
-import 'package:pawsome/fitness_app/fitness_app_theme.dart';
+import 'package:pawsome/pawsome/ui_view/wave_view.dart';
+import 'package:pawsome/pawsome/theming.dart';
 import 'package:pawsome/main.dart';
 import 'package:flutter/material.dart';
 

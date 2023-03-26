@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pawsome/fitness_app/screens/petinfo/petinfo.dart';
+import 'package:pawsome/pawsome/screens/petinfo/petinfo.dart';
 
 class Post extends StatefulWidget {
   const Post({super.key, required this.snap});
@@ -47,15 +47,13 @@ class _PostState extends State<Post> {
           ),
           Image.network(
               "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRPMKnq00NF_T7RusUNeLrSazRZM0S5O8_AOcw2iBTmYTxd3Q7uXf0sW41odpAKqSblKDMUMHGb8nZRo9g"),
-          Row(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: FaIcon(FontAwesomeIcons.heart),
-              ),
-              Text("Bestest doggo in the town"),
-            ],
-          ),
+          Row(children: [
+            IconButton(
+              onPressed: () {},
+              icon: FaIcon(FontAwesomeIcons.heart),
+            ),
+            Text("Bestest doggo in the tosswn"),
+          ]),
         ],
       ),
     );

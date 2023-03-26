@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pawsome/components/my_elevated_button.dart';
-import 'package:pawsome/fitness_app/fitness_app_theme.dart';
+import 'package:pawsome/pawsome/theming.dart';
 
 class AddPost extends StatefulWidget {
   const AddPost({super.key});

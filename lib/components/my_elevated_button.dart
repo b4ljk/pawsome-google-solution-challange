@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pawsome/fitness_app/fitness_app_theme.dart';
+import 'package:pawsome/pawsome/theming.dart';
 
 class MyElevatedButton extends StatelessWidget {
   final BorderRadiusGeometry? borderRadius;

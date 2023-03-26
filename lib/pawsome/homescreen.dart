@@ -1,11 +1,11 @@
-import 'package:pawsome/fitness_app/models/tabIcon_data.dart';
-import 'package:pawsome/fitness_app/screens/donation/donation.dart';
-import 'package:pawsome/fitness_app/screens/post/addpost.dart';
-import 'package:pawsome/fitness_app/screens/volunteering/volunteering.dart';
-import 'package:pawsome/fitness_app/training/training_screen.dart';
+import 'package:pawsome/pawsome/models/tabIcon_data.dart';
+import 'package:pawsome/pawsome/screens/donation/donation.dart';
+import 'package:pawsome/pawsome/screens/post/addpost.dart';
+import 'package:pawsome/pawsome/screens/volunteering/volunteering.dart';
+import 'package:pawsome/pawsome/theming.dart';
+import 'package:pawsome/pawsome/training/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
-import 'fitness_app_theme.dart';
 import 'my_diary/my_diary_screen.dart';
 
 class FitnessAppHomeScreen extends StatefulWidget {

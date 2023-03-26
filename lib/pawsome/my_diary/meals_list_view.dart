@@ -1,5 +1,5 @@
-import 'package:pawsome/fitness_app/fitness_app_theme.dart';
-import 'package:pawsome/fitness_app/models/meals_list_data.dart';
+import 'package:pawsome/pawsome/theming.dart';
+import 'package:pawsome/pawsome/models/meals_list_data.dart';
 import 'package:pawsome/main.dart';
 import 'package:flutter/material.dart';
 

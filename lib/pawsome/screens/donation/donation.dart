@@ -1,34 +1,28 @@
-import 'package:pawsome/components/calendar/calendar_popup.dart';
-import 'package:pawsome/components/my_elevated_button.dart';
-import 'package:pawsome/fitness_app/ui_view/body_measurement.dart';
-import 'package:pawsome/fitness_app/ui_view/glass_view.dart';
-import 'package:pawsome/fitness_app/ui_view/mediterranean_diet_view.dart';
-import 'package:pawsome/fitness_app/ui_view/title_view.dart';
-import 'package:pawsome/fitness_app/fitness_app_theme.dart';
-import 'package:pawsome/fitness_app/my_diary/meals_list_view.dart';
-import 'package:pawsome/fitness_app/my_diary/water_view.dart';
+import 'package:pawsome/components/shelter/shelter_card.dart';
+import 'package:pawsome/components/shelter/shelter_data.dart';
+import 'package:pawsome/pawsome/ui_view/body_measurement.dart';
+import 'package:pawsome/pawsome/ui_view/glass_view.dart';
+import 'package:pawsome/pawsome/ui_view/mediterranean_diet_view.dart';
+import 'package:pawsome/pawsome/ui_view/title_view.dart';
+import 'package:pawsome/pawsome/theming.dart';
+import 'package:pawsome/pawsome/my_diary/meals_list_view.dart';
+import 'package:pawsome/pawsome/my_diary/water_view.dart';
 import 'package:flutter/material.dart';
-import 'package:pawsome/main.dart';
 
-class Volunteering extends StatefulWidget {
-  const Volunteering({Key? key, this.animationController}) : super(key: key);
+class Donation extends StatefulWidget {
+  const Donation({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
   @override
-  _VolunteeringState createState() => _VolunteeringState();
+  _DonationState createState() => _DonationState();
 }
 
-class _VolunteeringState extends State<Volunteering>
-    with TickerProviderStateMixin {
+class _DonationState extends State<Donation> with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
-
-  DateTime startDate = DateTime.now();
-  DateTime endDate = DateTime.now().add(const Duration(days: 5));
 
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
-  bool isLostPets = false;
 
   @override
   void initState() {
@@ -64,28 +58,28 @@ class _VolunteeringState extends State<Volunteering>
   }
 
   void addAllListData() {
-    listViews.add(Container());
-  }
-
-  void showDemoDialog({BuildContext? context}) {
-    showDialog<dynamic>(
-      context: context!,
-      builder: (BuildContext context) => CalendarPopupView(
-        barrierDismissible: true,
-        minimumDate: DateTime.now(),
-        //  maximumDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 10),
-        initialEndDate: endDate,
-        initialStartDate: startDate,
-        onApplyClick: (DateTime startData, DateTime endData) {
-          setState(() {
-            startDate = startData;
-            endDate = endData;
-          });
-          print([startData, endData]);
-        },
-        onCancelClick: () {},
-      ),
-    );
+    int count = 2;
+    final Animation<double> animation = Tween<double>(begin: 0.0, end: 1.0)
+        .animate(CurvedAnimation(
+            parent: widget.animationController!,
+            curve:
+                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn)));
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Donation',
+    //     subTxt: 'Donation',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
+    listViews.add(ShelterItem(
+      animationController: widget.animationController,
+      animation: animation,
+      shelterData: ShelterData(),
+    ));
   }
 
   Future<bool> getData() async {
@@ -99,46 +93,12 @@ class _VolunteeringState extends State<Volunteering>
       color: FitnessAppTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Column(
-          children: [
-            Stack(
-              children: <Widget>[
-                getAppBarUI(),
-                getMainListViewUI(),
-                SizedBox(
-                  height: MediaQuery.of(context).padding.bottom,
-                ),
-              ],
-            ),
-            Container(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    !isLostPets
-                        ? EnabledButton(text: "Found pets")
-                        : DisabledButton(
-                            text: "Found pets",
-                            onPressed: () {
-                              setState(() {
-                                isLostPets = !isLostPets;
-                              });
-                              print(isLostPets);
-                            },
-                          ),
-                    SizedBox(width: 12),
-                    isLostPets
-                        ? EnabledButton(text: "Lost pets")
-                        : DisabledButton(
-                            text: "Lost pets",
-                            onPressed: () {
-                              setState(() {
-                                isLostPets = !isLostPets;
-                              });
-                              print(isLostPets);
-                            },
-                          ),
-                  ]),
+        body: Stack(
+          children: <Widget>[
+            getMainListViewUI(),
+            getAppBarUI(),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom,
             )
           ],
         ),
@@ -155,10 +115,14 @@ class _VolunteeringState extends State<Volunteering>
         } else {
           return ListView.builder(
             controller: scrollController,
-            padding: EdgeInsets.only(top: AppBar().preferredSize.height),
+            padding: EdgeInsets.only(
+              top: AppBar().preferredSize.height +
+                  MediaQuery.of(context).padding.top +
+                  24,
+              bottom: 62 + MediaQuery.of(context).padding.bottom,
+            ),
             itemCount: listViews.length,
             scrollDirection: Axis.vertical,
-            shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               widget.animationController?.forward();
               return listViews[index];
@@ -212,7 +176,7 @@ class _VolunteeringState extends State<Volunteering>
                                 child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Lost and Found',
+                                'Donation',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontFamily: FitnessAppTheme.fontName,
@@ -235,47 +199,5 @@ class _VolunteeringState extends State<Volunteering>
         )
       ],
     );
-  }
-}
-
-class EnabledButton extends StatelessWidget {
-  const EnabledButton({
-    super.key,
-    required this.text,
-  });
-  final text;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text(text),
-      style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all<Color>(HexColor("#6A88E5")),
-          padding: MaterialStateProperty.all<EdgeInsets>(
-              EdgeInsets.symmetric(horizontal: 50))),
-    );
-  }
-}
-
-class DisabledButton extends StatelessWidget {
-  const DisabledButton(
-      {super.key, required this.text, required this.onPressed});
-  final text;
-  final onPressed;
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton(
-        style: ButtonStyle(
-            padding: MaterialStateProperty.all<EdgeInsets>(
-                EdgeInsets.symmetric(horizontal: 50))),
-        onPressed: () {
-          onPressed();
-        },
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.black26),
-        ));
   }
 }

@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:pawsome/fitness_app/fitness_app_theme.dart';
+import 'package:pawsome/pawsome/theming.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math.dart' as vector;
 

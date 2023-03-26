@@ -3,18 +3,36 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pawsome/components/my_elevated_button.dart';
 
 class PetInformation extends StatelessWidget {
-  const PetInformation({super.key});
+  PetInformation({
+    super.key,
+  });
+
+  final List<String> listViews = <String>[
+    "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRPMKnq00NF_T7RusUNeLrSazRZM0S5O8_AOcw2iBTmYTxd3Q7uXf0sW41odpAKqSblKDMUMHGb8nZRo9g",
+    "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRPMKnq00NF_T7RusUNeLrSazRZM0S5O8_AOcw2iBTmYTxd3Q7uXf0sW41odpAKqSblKDMUMHGb8nZRo9g"
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize:
-            Size(double.infinity, MediaQuery.of(context).size.height * 0.5),
+            Size(double.infinity, MediaQuery.of(context).size.height * 0.3),
         child: Stack(
           children: [
-            Image.network(
-              "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRPMKnq00NF_T7RusUNeLrSazRZM0S5O8_AOcw2iBTmYTxd3Q7uXf0sW41odpAKqSblKDMUMHGb8nZRo9g",
+            PageView.builder(
+              itemCount: listViews.length,
+              onPageChanged: (index) {
+                // setState(() {
+                //   _currentImageIndex = index;
+                // });
+              },
+              itemBuilder: (context, index) {
+                return Image.network(
+                  listViews[index],
+                  fit: BoxFit.cover,
+                );
+              },
             ),
             SafeArea(
               child: IconButton(

@@ -1,23 +1,23 @@
-import 'package:pawsome/components/shelter/shelter_card.dart';
-import 'package:pawsome/components/shelter/shelter_data.dart';
-import 'package:pawsome/fitness_app/ui_view/body_measurement.dart';
-import 'package:pawsome/fitness_app/ui_view/glass_view.dart';
-import 'package:pawsome/fitness_app/ui_view/mediterranean_diet_view.dart';
-import 'package:pawsome/fitness_app/ui_view/title_view.dart';
-import 'package:pawsome/fitness_app/fitness_app_theme.dart';
-import 'package:pawsome/fitness_app/my_diary/meals_list_view.dart';
-import 'package:pawsome/fitness_app/my_diary/water_view.dart';
+import 'package:pawsome/pawsome/screens/shelter/feed.dart';
+import 'package:pawsome/pawsome/ui_view/body_measurement.dart';
+import 'package:pawsome/pawsome/ui_view/glass_view.dart';
+import 'package:pawsome/pawsome/ui_view/mediterranean_diet_view.dart';
+import 'package:pawsome/pawsome/ui_view/title_view.dart';
+import 'package:pawsome/pawsome/theming.dart';
+import 'package:pawsome/pawsome/my_diary/meals_list_view.dart';
+import 'package:pawsome/pawsome/my_diary/water_view.dart';
 import 'package:flutter/material.dart';
 
-class Donation extends StatefulWidget {
-  const Donation({Key? key, this.animationController}) : super(key: key);
+class MyDiaryScreen extends StatefulWidget {
+  const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
   @override
-  _DonationState createState() => _DonationState();
+  _MyDiaryScreenState createState() => _MyDiaryScreenState();
 }
 
-class _DonationState extends State<Donation> with TickerProviderStateMixin {
+class _MyDiaryScreenState extends State<MyDiaryScreen>
+    with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
@@ -58,28 +58,92 @@ class _DonationState extends State<Donation> with TickerProviderStateMixin {
   }
 
   void addAllListData() {
-    int count = 2;
-    final Animation<double> animation = Tween<double>(begin: 0.0, end: 1.0)
-        .animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn)));
+    listViews.add(Container());
+
     // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Donation',
-    //     subTxt: 'Donation',
+    //   MediterranesnDietView(
     //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
     //         parent: widget.animationController!,
     //         curve:
-    //             Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
+    //             Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController!,
     //   ),
     // );
-    listViews.add(ShelterItem(
-      animationController: widget.animationController,
-      animation: animation,
-      shelterData: ShelterData(),
-    ));
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Meals today',
+    //     subTxt: 'Customize',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
+
+    // listViews.add(
+    //   MealsListView(
+    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //         CurvedAnimation(
+    //             parent: widget.animationController!,
+    //             curve: Interval((1 / count) * 3, 1.0,
+    //                 curve: Curves.fastOutSlowIn))),
+    //     mainScreenAnimationController: widget.animationController,
+    //   ),
+    // );
+
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Body measurement',
+    //     subTxt: 'Today',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
+
+    // listViews.add(
+    //   BodyMeasurementView(
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Water',
+    //     subTxt: 'Aqua SmartBottle',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController!,
+    //         curve:
+    //             Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController!,
+    //   ),
+    // );
+
+    // listViews.add(
+    //   WaterView(
+    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //         CurvedAnimation(
+    //             parent: widget.animationController!,
+    //             curve: Interval((1 / count) * 7, 1.0,
+    //                 curve: Curves.fastOutSlowIn))),
+    //     mainScreenAnimationController: widget.animationController!,
+    //   ),
+    // );
+    // listViews.add(
+    //   GlassView(
+    //       animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //           CurvedAnimation(
+    //               parent: widget.animationController!,
+    //               curve: Interval((1 / count) * 8, 1.0,
+    //                   curve: Curves.fastOutSlowIn))),
+    //       animationController: widget.animationController!),
+    // );
   }
 
   Future<bool> getData() async {
@@ -99,7 +163,12 @@ class _DonationState extends State<Donation> with TickerProviderStateMixin {
             getAppBarUI(),
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
-            )
+            ),
+            SafeArea(
+                child: Padding(
+              padding: EdgeInsets.only(top: AppBar().preferredSize.height),
+              child: Post(snap: null),
+            )),
           ],
         ),
       ),
@@ -176,7 +245,7 @@ class _DonationState extends State<Donation> with TickerProviderStateMixin {
                                 child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Donation',
+                                'Animal shelters',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontFamily: FitnessAppTheme.fontName,
