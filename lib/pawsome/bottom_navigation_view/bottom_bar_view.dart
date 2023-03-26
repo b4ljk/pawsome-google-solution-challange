@@ -3,6 +3,7 @@ import 'package:pawsome/pawsome/theming.dart';
 import 'package:pawsome/pawsome/models/tabIcon_data.dart';
 import 'package:pawsome/main.dart';
 import 'package:flutter/material.dart';
+import 'package:pawsome/utils/hexColor.dart';
 
 // import '../../main.dart';
 // import '../models/tabIcon_data.dart';
@@ -272,7 +273,7 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                       width: 8,
                       height: 8,
                       decoration: BoxDecoration(
-                        color: FitnessAppTheme.nearlyDarkBlue,
+                        color: GetHex("#c68b77"),
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -293,7 +294,7 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                       width: 4,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: FitnessAppTheme.nearlyDarkBlue,
+                        color: GetHex("#c68b77"),
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -314,7 +315,7 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                       width: 6,
                       height: 6,
                       decoration: BoxDecoration(
-                        color: FitnessAppTheme.nearlyDarkBlue,
+                        color: GetHex("#c68b77"),
                         shape: BoxShape.circle,
                       ),
                     ),
