@@ -3,6 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../components/my_elevated_button.dart';
+import '../../theming.dart';
+
 class AddLostFoundPetScreen extends StatefulWidget {
   const AddLostFoundPetScreen({Key? key}) : super(key: key);
 
@@ -126,10 +129,17 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
                 },
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _onSubmit,
-                child: const Text('Submit'),
-              ),
+              MyElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(style: TextStyle(fontSize: 20), "🤞"),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text("Submit")
+                      ]))
             ],
           ),
         ),

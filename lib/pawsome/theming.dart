@@ -7,6 +7,7 @@ class PawsomeTheme {
   static const Color background = Color(0xFFF2F3F8);
   static const Color nearlyDarkBlue = Color(0xFF2633C5);
   static const Color gradientBlue = Color(0xFF6A88E5);
+  static const Color gradientBrown = Color(0xFFc68b77);
 
   static const Color nearlyBlue = Color(0xFF00B6F0);
   static const Color nearlyBlack = Color(0xFF213333);
