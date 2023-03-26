@@ -112,7 +112,6 @@ class _VolunteeringState extends State<Volunteering>
                 SizedBox(
                   height: MediaQuery.of(context).padding.bottom,
                 ),
-                GetUserName()
               ],
             ),
             Container(
@@ -144,7 +143,7 @@ class _VolunteeringState extends State<Volunteering>
                             },
                           ),
                   ]),
-            )
+            ),
           ],
         ),
       ),
@@ -282,39 +281,5 @@ class DisabledButton extends StatelessWidget {
           text,
           style: TextStyle(color: Colors.black26),
         ));
-  }
-}
-
-class GetUserName extends StatelessWidget {
-  GetUserName();
-  final String documentId = "1";
-
-  @override
-  Widget build(BuildContext context) {
-    CollectionReference users =
-        FirebaseFirestore.instance.collection('shelters');
-
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(documentId).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Text("Something went wrong");
-        }
-
-        if (snapshot.hasData && !snapshot.data!.exists) {
-          return Text("Document does not exist");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          print(snapshot.data!.data);
-          Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
-          return Text("Full Name: ${data['location']} ${data['name']}");
-        }
-
-        return Text("loading");
-      },
-    );
   }
 }

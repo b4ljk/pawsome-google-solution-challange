@@ -130,7 +130,8 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
                     return;
                   }
                   setState(() {
-                    tabBody = ShelterScreen();
+                    tabBody =
+                        Donation(animationController: animationController);
                   });
                 });
                 break;
