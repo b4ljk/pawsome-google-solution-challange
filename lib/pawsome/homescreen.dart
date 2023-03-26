@@ -8,7 +8,7 @@ import 'package:pawsome/pawsome/theming.dart';
 import 'package:pawsome/pawsome/training/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
-import 'my_diary/my_diary_screen.dart';
+import 'animalShelters/main.dart';
 
 class FitnessAppHomeScreen extends StatefulWidget {
   @override
@@ -132,8 +132,7 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
                     return;
                   }
                   setState(() {
-                    tabBody =
-                        Donation(animationController: animationController);
+                    tabBody = ShelterScreen();
                   });
                 });
                 break;

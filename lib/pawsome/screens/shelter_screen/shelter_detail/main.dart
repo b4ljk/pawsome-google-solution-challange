@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pawsome/pawsome/screens/shelter/feed.dart';
 import 'package:pawsome/pawsome/screens/volunteering/volunteering.dart';
 
+import '../../../../components/my_elevated_button.dart';
+import '../../../theming.dart';
+
 class ShelterDetailScreen extends StatefulWidget {
   const ShelterDetailScreen({Key? key}) : super(key: key);
 
@@ -82,16 +85,42 @@ class _ShelterDetailScreenState extends State<ShelterDetailScreen> {
               ],
             ),
             SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                EnabledButton(
-                  text: "Volunteer",
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(children: [
+                Expanded(
+                  child: MyElevatedButton(
+                      onPressed: () {},
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(style: TextStyle(fontSize: 20), "🌱"),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Text("Donate")
+                          ])),
                 ),
-                EnabledButton(
-                  text: "Donate",
-                ),
-              ],
+                SizedBox(width: 10),
+                Expanded(
+                  child: MyElevatedButton(
+                    gradient: const LinearGradient(colors: [
+                      PawsomeTheme.gradientBlue,
+                      PawsomeTheme.nearlyDarkBlue,
+                    ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                    onPressed: () {},
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(style: TextStyle(fontSize: 20), "🎒"),
+                          SizedBox(
+                            width: 4,
+                          ),
+                          Text("Volunteer")
+                        ]),
+                  ),
+                )
+              ]),
             ),
             SizedBox(height: 10),
           ],

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pawsome/components/my_elevated_button.dart';
-import 'package:pawsome/pawsome/screens/donation/donation.dart';
+import 'package:pawsome/pawsome/animalShelters/main.dart';
 import 'package:pawsome/utils/hexColor.dart';
 
-import '../../theming.dart';
+import '../theming.dart';
 
-class ShelterDetail extends StatefulWidget {
-  const ShelterDetail({
+class PetDetail extends StatefulWidget {
+  const PetDetail({
     Key? key,
     required this.shelterData,
   }) : super(key: key);
   final Shelters shelterData;
 
   @override
-  _ShelterDetailState createState() => _ShelterDetailState();
+  _PetDetailState createState() => _PetDetailState();
 }
 
-class _ShelterDetailState extends State<ShelterDetail> {
+class _PetDetailState extends State<PetDetail> {
   final List<String> _images = [
     'https://firebasestorage.googleapis.com/v0/b/pawsome-59b88.appspot.com/o/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg?alt=media&token=9d7b80f8-b97a-451b-b1bc-ee1417f21e57',
     'https://firebasestorage.googleapis.com/v0/b/pawsome-59b88.appspot.com/o/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg?alt=media&token=9d7b80f8-b97a-451b-b1bc-ee1417f21e57',
@@ -141,40 +141,19 @@ class _ShelterDetailState extends State<ShelterDetail> {
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Row(children: [
-                Expanded(
-                  child: MyElevatedButton(
-                      onPressed: () {},
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(style: TextStyle(fontSize: 20), "🌱"),
-                            SizedBox(
-                              width: 4,
-                            ),
-                            Text("Donate")
-                          ])),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: MyElevatedButton(
-                    gradient: const LinearGradient(colors: [
-                      PawsomeTheme.gradientBlue,
-                      PawsomeTheme.nearlyDarkBlue,
-                    ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+              child: Expanded(
+                child: MyElevatedButton(
                     onPressed: () {},
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(style: TextStyle(fontSize: 20), "🎒"),
+                          Text(style: TextStyle(fontSize: 20), "❤️"),
                           SizedBox(
                             width: 4,
                           ),
-                          Text("Volunteer")
-                        ]),
-                  ),
-                )
-              ]),
+                          Text("Give Forever Home")
+                        ])),
+              ),
             ),
           )
         ],

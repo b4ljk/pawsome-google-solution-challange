@@ -2,7 +2,7 @@ import 'package:pawsome/components/shelter/shelter_data.dart';
 import 'package:pawsome/hotel_booking/hotel_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pawsome/pawsome/screens/donation/donation.dart';
+import 'package:pawsome/pawsome/animalShelters/main.dart';
 
 class ShelterItem extends StatelessWidget {
   const ShelterItem({

@@ -1,14 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pawsome/components/shelter/shelter_card.dart';
 import 'package:pawsome/components/shelter/shelter_data.dart';
-import 'package:pawsome/pawsome/screens/donation/shelterdetail.dart';
 import 'package:pawsome/pawsome/ui_view/body_measurement.dart';
 import 'package:pawsome/pawsome/ui_view/glass_view.dart';
 import 'package:pawsome/pawsome/ui_view/mediterranean_diet_view.dart';
 import 'package:pawsome/pawsome/ui_view/title_view.dart';
 import 'package:pawsome/pawsome/theming.dart';
-import 'package:pawsome/pawsome/my_diary/meals_list_view.dart';
-import 'package:pawsome/pawsome/my_diary/water_view.dart';
 import 'package:flutter/material.dart';
 
 class Donation extends StatefulWidget {
@@ -92,13 +89,6 @@ class _DonationState extends State<Donation> with TickerProviderStateMixin {
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
             ),
-            SafeArea(
-                child: Padding(
-              padding: EdgeInsets.only(top: AppBar().preferredSize.height + 5),
-              child: GetData(
-                collection: "shelters",
-              ),
-            ))
           ],
         ),
       ),
@@ -199,132 +189,4 @@ class _DonationState extends State<Donation> with TickerProviderStateMixin {
       ],
     );
   }
-}
-
-class GetData extends StatefulWidget {
-  GetData({Key? key, required this.collection}) : super(key: key);
-
-  final String collection;
-
-  @override
-  State<GetData> createState() => _GetDataState();
-}
-
-class _GetDataState extends State<GetData> {
-  final ScrollController _scrollController = ScrollController();
-  final int _batchSize = 10;
-  List<DocumentSnapshot> _documents = [];
-  bool _isLoading = false;
-  bool _hasMoreData = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-    _scrollController.addListener(_onScroll);
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  void _onScroll() {
-    if (!_isLoading &&
-        _hasMoreData &&
-        _scrollController.position.pixels ==
-            _scrollController.position.maxScrollExtent) {
-      _loadData();
-    }
-  }
-
-  Future<void> _loadData() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    QuerySnapshot querySnapshot;
-    if (_documents.isEmpty) {
-      querySnapshot = await FirebaseFirestore.instance
-          .collection(widget.collection)
-          .orderBy('name')
-          .limit(_batchSize)
-          .get();
-    } else {
-      querySnapshot = await FirebaseFirestore.instance
-          .collection(widget.collection)
-          .orderBy('name')
-          .startAfterDocument(_documents.last)
-          .limit(_batchSize)
-          .get();
-    }
-
-    if (querySnapshot.docs.length < _batchSize) {
-      _hasMoreData = false;
-    }
-
-    setState(() {
-      _isLoading = false;
-      _documents.addAll(querySnapshot.docs);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: _documents.length + (_hasMoreData ? 1 : 0),
-      itemBuilder: (BuildContext context, int index) {
-        if (index == _documents.length) {
-          return Center(
-              child: _isLoading ? CircularProgressIndicator() : SizedBox());
-        }
-
-        final document = _documents[index];
-        return ShelterItem(
-          callback: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ShelterDetail(
-                  shelterData: Shelters(
-                    location: document['location'],
-                    logo: document['logo'],
-                    name: document['name'],
-                  ),
-                ),
-              ),
-            );
-          },
-          shelterData: Shelters(
-            location: document['location'],
-            logo: document['logo'],
-            name: document['name'],
-          ),
-        );
-      },
-    );
-  }
-}
-
-class Shelters {
-  Shelters({
-    required this.location,
-    required this.logo,
-    required this.name,
-  });
-
-  Map<String, dynamic> toDocument() {
-    return {
-      'location': location,
-      'logo': logo,
-      'name': name,
-    };
-  }
-
-  final String location;
-  final String logo;
-  final String name;
-  // final String phone;
 }
