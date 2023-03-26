@@ -1,4 +1,5 @@
 import 'package:pawsome/pawsome/models/tabIcon_data.dart';
+import 'package:pawsome/pawsome/screens/add_lost_found_screen/main.dart';
 import 'package:pawsome/pawsome/screens/donation/donation.dart';
 import 'package:pawsome/pawsome/screens/post/addpost.dart';
 import 'package:pawsome/pawsome/screens/shelter_screen/main.dart';
@@ -85,7 +86,8 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
             Navigator.push<dynamic>(
               context,
               MaterialPageRoute<dynamic>(
-                builder: (BuildContext context) => const AddPost(),
+                builder: (BuildContext context) =>
+                    const AddLostFoundPetScreen(),
               ),
             );
           },

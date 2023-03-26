@@ -39,6 +39,7 @@ dependencies:
     firebase_messaging: ^14.3.0
     flutter_signin_button: ^2.0.0
     anim_search_bar: ^2.0.3
+    image_picker: ^0.8.7
 
 dev_dependencies:
     flutter_test:
