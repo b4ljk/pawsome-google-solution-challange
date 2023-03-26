@@ -117,11 +117,11 @@ class AreaView extends StatelessWidget {
             child: Container(
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
-                color: FitnessAppTheme.white,
+                color: PawsomeTheme.white,
                 borderRadius: const BorderRadius.all(Radius.circular(12.0)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                      color: FitnessAppTheme.grey.withOpacity(0.4),
+                      color: PawsomeTheme.grey.withOpacity(0.4),
                       offset: const Offset(1.1, 1.1),
                       blurRadius: 10.0),
                 ],
@@ -133,7 +133,7 @@ class AreaView extends StatelessWidget {
                   highlightColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                  splashColor: FitnessAppTheme.nearlyDarkBlue.withOpacity(0.2),
+                  splashColor: PawsomeTheme.nearlyDarkBlue.withOpacity(0.2),
                   onTap: () {},
                   child: Column(
                     children: <Widget>[
@@ -149,11 +149,11 @@ class AreaView extends StatelessWidget {
                           title,
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            fontFamily: FitnessAppTheme.fontName,
+                            fontFamily: PawsomeTheme.fontName,
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
                             letterSpacing: 0.0,
-                            color: FitnessAppTheme.darkText,
+                            color: PawsomeTheme.darkText,
                           ),
                         ),
                       ),

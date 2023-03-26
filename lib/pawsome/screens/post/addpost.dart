@@ -27,7 +27,7 @@ class _AddPostState extends State<AddPost> {
             MyElevatedButton(
                 width: double.infinity,
                 gradient: LinearGradient(
-                    colors: [FitnessAppTheme.nearlyDarkBlue, Colors.red],
+                    colors: [PawsomeTheme.nearlyDarkBlue, Colors.red],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight),
                 onPressed: () {},

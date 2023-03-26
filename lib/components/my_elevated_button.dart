@@ -17,8 +17,8 @@ class MyElevatedButton extends StatelessWidget {
     this.width,
     this.height = 44.0,
     this.gradient = const LinearGradient(colors: [
-      FitnessAppTheme.nearlyDarkBlue,
-      FitnessAppTheme.gradientBlue,
+      PawsomeTheme.nearlyDarkBlue,
+      PawsomeTheme.gradientBlue,
     ], begin: Alignment.topLeft, end: Alignment.bottomRight),
   }) : super(key: key);
 

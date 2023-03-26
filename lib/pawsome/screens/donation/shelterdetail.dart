@@ -159,8 +159,8 @@ class _ShelterDetailState extends State<ShelterDetail> {
                 Expanded(
                   child: MyElevatedButton(
                     gradient: const LinearGradient(colors: [
-                      FitnessAppTheme.gradientBlue,
-                      FitnessAppTheme.nearlyDarkBlue,
+                      PawsomeTheme.gradientBlue,
+                      PawsomeTheme.nearlyDarkBlue,
                     ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                     onPressed: () {},
                     child: Row(
