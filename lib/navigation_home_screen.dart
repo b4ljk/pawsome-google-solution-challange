@@ -6,7 +6,6 @@ import 'package:pawsome/pawsome/screens/about/aboutus.dart';
 import 'package:pawsome/help_screen.dart';
 import 'package:pawsome/invite_friend_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'pawsome/homescreen.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
@@ -39,10 +38,8 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
             drawerWidth: MediaQuery.of(context).size.width * 0.75,
             onDrawerCall: (DrawerIndex drawerIndexdata) {
               changeIndex(drawerIndexdata);
-              //callback from drawer for replace screen as user need with passing DrawerIndex(Enum index)
             },
             screenView: screenView,
-            //we replace screen view as we need on navigate starting screens like MyHomePage, HelpScreen, FeedbackScreen, etc...
           ),
         ),
       ),

@@ -56,10 +56,10 @@ class _BottomBarViewState extends State<BottomBarView>
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: 62,
+                      height: 56,
                       child: Padding(
                         padding:
-                            const EdgeInsets.only(left: 8, right: 8, top: 4),
+                            const EdgeInsets.only(left: 24, right: 24, top: 12),
                         child: Row(
                           children: <Widget>[
                             Expanded(

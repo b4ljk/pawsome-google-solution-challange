@@ -1,6 +1,7 @@
 import 'package:pawsome/pawsome/models/tabIcon_data.dart';
 import 'package:pawsome/pawsome/screens/donation/donation.dart';
 import 'package:pawsome/pawsome/screens/post/addpost.dart';
+import 'package:pawsome/pawsome/screens/shelter_screen/main.dart';
 import 'package:pawsome/pawsome/screens/volunteering/volunteering.dart';
 import 'package:pawsome/pawsome/theming.dart';
 import 'package:pawsome/pawsome/training/training_screen.dart';
@@ -129,8 +130,7 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
                     return;
                   }
                   setState(() {
-                    tabBody =
-                        Donation(animationController: animationController);
+                    tabBody = ShelterScreen();
                   });
                 });
                 break;
