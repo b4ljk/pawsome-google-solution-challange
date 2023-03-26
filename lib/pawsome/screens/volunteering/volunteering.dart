@@ -9,6 +9,7 @@ import 'package:pawsome/pawsome/my_diary/meals_list_view.dart';
 import 'package:pawsome/pawsome/my_diary/water_view.dart';
 import 'package:flutter/material.dart';
 import 'package:pawsome/main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Volunteering extends StatefulWidget {
   const Volunteering({Key? key, this.animationController}) : super(key: key);
@@ -32,6 +33,9 @@ class _VolunteeringState extends State<Volunteering>
 
   @override
   void initState() {
+    CollectionReference users =
+        FirebaseFirestore.instance.collection('shelters');
+    print(users);
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController!,
@@ -108,6 +112,7 @@ class _VolunteeringState extends State<Volunteering>
                 SizedBox(
                   height: MediaQuery.of(context).padding.bottom,
                 ),
+                GetUserName()
               ],
             ),
             Container(
@@ -277,5 +282,39 @@ class DisabledButton extends StatelessWidget {
           text,
           style: TextStyle(color: Colors.black26),
         ));
+  }
+}
+
+class GetUserName extends StatelessWidget {
+  GetUserName();
+  final String documentId = "1";
+
+  @override
+  Widget build(BuildContext context) {
+    CollectionReference users =
+        FirebaseFirestore.instance.collection('shelters');
+
+    return FutureBuilder<DocumentSnapshot>(
+      future: users.doc(documentId).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.hasData && !snapshot.data!.exists) {
+          return Text("Document does not exist");
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          print(snapshot.data!.data);
+          Map<String, dynamic> data =
+              snapshot.data!.data() as Map<String, dynamic>;
+          return Text("Full Name: ${data['location']} ${data['name']}");
+        }
+
+        return Text("loading");
+      },
+    );
   }
 }
