@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pawsome/pawsome/screens/info_screen/post_list_screen/main.dart';
 
 import '../theming.dart';
 
@@ -134,7 +135,12 @@ class AreaView extends StatelessWidget {
                   hoverColor: Colors.transparent,
                   borderRadius: const BorderRadius.all(Radius.circular(8.0)),
                   splashColor: PawsomeTheme.nearlyDarkBlue.withOpacity(0.2),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PostListScreen()),
+                    );
+                  },
                   child: Column(
                     children: <Widget>[
                       Expanded(

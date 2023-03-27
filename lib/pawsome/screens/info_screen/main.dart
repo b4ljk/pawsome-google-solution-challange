@@ -2,18 +2,17 @@ import 'package:pawsome/pawsome/ui_view/info_center_card.dart';
 import 'package:pawsome/pawsome/ui_view/title_view.dart';
 import 'package:flutter/material.dart';
 
-import '../theming.dart';
+import '../../theming.dart';
 
-class TrainingScreen extends StatefulWidget {
-  const TrainingScreen({Key? key, this.animationController}) : super(key: key);
+class InfoScreen extends StatefulWidget {
+  const InfoScreen({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
   @override
-  _TrainingScreenState createState() => _TrainingScreenState();
+  _InfoScreenState createState() => _InfoScreenState();
 }
 
-class _TrainingScreenState extends State<TrainingScreen>
-    with TickerProviderStateMixin {
+class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
@@ -59,7 +58,7 @@ class _TrainingScreenState extends State<TrainingScreen>
     listViews.add(
       TitleView(
         titleTxt: 'Reccomended',
-        subTxt: 'more',
+        // subTxt: 'more',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
