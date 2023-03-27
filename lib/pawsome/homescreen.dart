@@ -3,7 +3,7 @@ import 'package:pawsome/pawsome/screens/add_lost_found_screen/main.dart';
 import 'package:pawsome/pawsome/screens/donation/donation.dart';
 import 'package:pawsome/pawsome/screens/post/addpost.dart';
 import 'package:pawsome/pawsome/screens/shelter_screen/main.dart';
-import 'package:pawsome/pawsome/screens/volunteering/volunteering.dart';
+import 'package:pawsome/pawsome/screens/lostfound/main.dart';
 import 'package:pawsome/pawsome/theming.dart';
 import 'package:pawsome/pawsome/training/training_screen.dart';
 import 'package:flutter/material.dart';

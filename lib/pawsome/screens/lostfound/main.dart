@@ -1,5 +1,6 @@
 import 'package:pawsome/components/calendar/calendar_popup.dart';
 import 'package:pawsome/components/my_elevated_button.dart';
+import 'package:pawsome/pawsome/screens/lostfound/animalcard.dart';
 import 'package:pawsome/pawsome/ui_view/body_measurement.dart';
 import 'package:pawsome/pawsome/ui_view/glass_view.dart';
 import 'package:pawsome/pawsome/ui_view/mediterranean_diet_view.dart';
@@ -144,6 +145,17 @@ class _VolunteeringState extends State<Volunteering>
                           ),
                   ]),
             ),
+            LostAnimalCard(
+                isLost: false,
+                lostAnimal: LostAnimal(
+                    description:
+                        "When she was lost she was having a collar and a leash, her right arm is slightly hurt and she is probably dying cold out there anyone seen?",
+                    name: "name",
+                    lostDate: "2023/12/23",
+                    phone: "99199119",
+                    lostLocation: "Ulaanbaatar",
+                    picture:
+                        "https://scontent.fuln8-1.fna.fbcdn.net/v/t39.30808-6/335418226_1492717761132623_6255492581044566377_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=jxdYhdy85VcAX8MFUO8&_nc_ht=scontent.fuln8-1.fna&oh=00_AfBOjgjXVKEOJRPHnZY-Gx1_u7Rup2FmJ92_YhBbuEULLg&oe=64264604")),
           ],
         ),
       ),
