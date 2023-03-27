@@ -1,7 +1,5 @@
-import 'package:pawsome/pawsome/ui_view/area_list_view.dart';
-import 'package:pawsome/pawsome/ui_view/running_view.dart';
+import 'package:pawsome/pawsome/ui_view/info_center_card.dart';
 import 'package:pawsome/pawsome/ui_view/title_view.dart';
-import 'package:pawsome/pawsome/ui_view/workout_view.dart';
 import 'package:flutter/material.dart';
 
 import '../theming.dart';
@@ -78,15 +76,6 @@ class _TrainingScreenState extends State<TrainingScreen>
                 curve: Interval((1 / count) * 5, 1.0,
                     curve: Curves.fastOutSlowIn))),
         mainScreenAnimationController: widget.animationController!,
-      ),
-    );
-    listViews.add(
-      RunningView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
       ),
     );
   }
