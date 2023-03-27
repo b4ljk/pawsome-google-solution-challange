@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:pawsome/hotel_booking/hotel_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -134,7 +136,10 @@ class LostAnimalCard extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 16, bottom: 8),
                             child: Text(
-                                lostAnimal.description.substring(0, 120) +
+                                lostAnimal.description.substring(
+                                        0,
+                                        min(lostAnimal.description.length,
+                                            120)) +
                                     "...",
                                 style: TextStyle(
                                     fontSize: 10,
