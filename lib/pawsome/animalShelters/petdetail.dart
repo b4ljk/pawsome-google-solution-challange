@@ -46,19 +46,20 @@ class _PetDetailState extends State<PetDetail> {
                     );
                   },
                 ),
-                Positioned(
-                  top: 20,
-                  right: 20,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.white,
-                    ),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: const Icon(Icons.close),
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.white,
+                      ),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: FaIcon(FontAwesomeIcons.chevronLeft),
+                      ),
                     ),
                   ),
                 ),
@@ -141,19 +142,17 @@ class _PetDetailState extends State<PetDetail> {
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Expanded(
-                child: MyElevatedButton(
-                    onPressed: () {},
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(style: TextStyle(fontSize: 20), "❤️"),
-                          SizedBox(
-                            width: 4,
-                          ),
-                          Text("Give Forever Home")
-                        ])),
-              ),
+              child: MyElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(style: TextStyle(fontSize: 20), "❤️"),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text("Give Forever Home")
+                      ])),
             ),
           )
         ],

@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pawsome/firebase/firestore.dart';
+import 'package:pawsome/pawsome/screens/lostfound/animalcard.dart';
 
 import '../../../components/my_elevated_button.dart';
 import '../../theming.dart';
@@ -130,7 +132,15 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
               ),
               const SizedBox(height: 16),
               MyElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Firestore.lostAnimalRef.add(LostAnimal(
+                        name: "test",
+                        lostLocation: "test",
+                        phone: "phone",
+                        picture: "picture",
+                        lostDate: "lostDate",
+                        description: "description"));
+                  },
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

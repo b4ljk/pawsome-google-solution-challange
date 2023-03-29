@@ -87,7 +87,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
               padding: EdgeInsets.only(
                   top: AppBar().preferredSize.height + 5, bottom: 35),
               child: GetData(
-                collection: "shelters",
+                collection: "pets",
               ),
             )),
           ],
@@ -274,25 +274,7 @@ class _GetDataState extends State<GetData> {
 
         final document = _documents[index];
         return ShelterItem(
-          callback: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => PetDetail(
-                  shelterData: Shelters(
-                    location: document['location'],
-                    logo: document['logo'],
-                    name: document['name'],
-                  ),
-                ),
-              ),
-            );
-          },
-          shelterData: Shelters(
-            location: document['location'],
-            logo: document['logo'],
-            name: document['name'],
-          ),
+          document: document,
         );
       },
     );
@@ -300,22 +282,40 @@ class _GetDataState extends State<GetData> {
 }
 
 class Shelters {
-  Shelters({
-    required this.location,
-    required this.logo,
-    required this.name,
-  });
-
-  Map<String, dynamic> toDocument() {
-    return {
-      'location': location,
-      'logo': logo,
-      'name': name,
-    };
-  }
+  Shelters(
+      {required this.location,
+      required this.image,
+      required this.name,
+      required this.breed,
+      required this.phone,
+      required this.shelter_id});
 
   final String location;
-  final String logo;
+  final String image;
   final String name;
-  // final String phone;
+  final String breed;
+  final String shelter_id;
+  final String phone;
+
+  factory Shelters.fromJson(Map<String, dynamic> json) {
+    return Shelters(
+      location: json['location'],
+      image: json['image'],
+      name: json['name'],
+      breed: json['breed'],
+      shelter_id: json['shelter_id'],
+      phone: json['phone'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'location': location,
+      'image': image,
+      'name': name,
+      'breed': breed,
+      'shelter_id': shelter_id,
+      'phone': phone,
+    };
+  }
 }

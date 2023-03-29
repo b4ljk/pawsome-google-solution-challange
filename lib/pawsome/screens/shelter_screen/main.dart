@@ -38,19 +38,21 @@ class _ShelterScreenState extends State<ShelterScreen> {
     return Scaffold(
       body: Column(
         children: [
-          Padding(
-              padding: const EdgeInsets.only(top: 4, right: 8, left: 50),
-              child: AnimSearchBar(
-                rtl: true,
-                width: 400,
-                textController: textController,
-                onSuffixTap: () {
-                  setState(() {
-                    textController.clear();
-                  });
-                },
-                onSubmitted: (String) {},
-              )),
+          SafeArea(
+            child: Padding(
+                padding: const EdgeInsets.only(top: 4, right: 8, left: 50),
+                child: AnimSearchBar(
+                  rtl: true,
+                  width: 400,
+                  textController: textController,
+                  onSuffixTap: () {
+                    setState(() {
+                      textController.clear();
+                    });
+                  },
+                  onSubmitted: (String) {},
+                )),
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: shelters.length,

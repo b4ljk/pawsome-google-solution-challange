@@ -214,4 +214,21 @@ class LostAnimal {
   final picture;
   final lostDate;
   final String description;
+
+  LostAnimal.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        lostLocation = json['lostLocation'],
+        phone = json['phone'],
+        picture = json['picture'],
+        lostDate = json['lostDate'],
+        description = json['description'];
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'lostLocation': lostLocation,
+        'phone': phone,
+        'picture': picture,
+        'lostDate': lostDate,
+        'description': description,
+      };
 }

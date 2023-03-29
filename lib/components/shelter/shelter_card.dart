@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pawsome/components/shelter/shelter_data.dart';
 import 'package:pawsome/hotel_booking/hotel_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pawsome/pawsome/animalShelters/main.dart';
+import 'package:pawsome/pawsome/animalShelters/petdetail.dart';
 
 class ShelterItem extends StatelessWidget {
   const ShelterItem({
@@ -10,23 +12,36 @@ class ShelterItem extends StatelessWidget {
     this.animationController,
     this.animation,
     this.callback,
-    required this.shelterData,
+    required this.document,
   }) : super(key: key);
 
   final VoidCallback? callback;
   final AnimationController? animationController;
   final Animation<double>? animation;
-  final Shelters shelterData;
+  final DocumentSnapshot document;
+  Shelters get shelterData =>
+      Shelters.fromJson(document.data() as Map<String, dynamic>);
 
   @override
   Widget build(BuildContext context) {
-    print(shelterData);
+    // print all items in documents
+    print(document.data());
 
     return Padding(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
       child: InkWell(
         splashColor: Colors.transparent,
-        onTap: callback,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PetDetail(
+                shelterData:
+                    Shelters.fromJson(document.data() as Map<String, dynamic>),
+              ),
+            ),
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
@@ -47,7 +62,7 @@ class ShelterItem extends StatelessWidget {
                     AspectRatio(
                       aspectRatio: 2.5,
                       child: Image.network(
-                        shelterData.logo,
+                        shelterData.image,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -120,7 +135,7 @@ class ShelterItem extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "shelterData.phon",
+                                  shelterData.phone,
                                   style: TextStyle(
                                       fontSize: 10,
                                       color: Colors.grey.withOpacity(0.8)),
