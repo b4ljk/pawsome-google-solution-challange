@@ -140,35 +140,42 @@ class _VolunteeringState extends State<Volunteering>
             Padding(
               padding: EdgeInsets.only(top: AppBar().preferredSize.height),
               child: SafeArea(
-                  child: Container(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      !isLostPets
-                          ? EnabledButton(text: "Found pets")
-                          : DisabledButton(
-                              text: "Found pets",
-                              onPressed: () {
-                                setState(() {
-                                  isLostPets = !isLostPets;
-                                });
-                                print(isLostPets);
-                              },
-                            ),
-                      SizedBox(width: 12),
-                      isLostPets
-                          ? EnabledButton(text: "Lost pets")
-                          : DisabledButton(
-                              text: "Lost pets",
-                              onPressed: () {
-                                setState(() {
-                                  isLostPets = !isLostPets;
-                                });
-                                print(isLostPets);
-                              },
-                            ),
-                    ]),
+                  child: Column(
+                children: [
+                  Container(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          !isLostPets
+                              ? EnabledButton(text: "Found pets")
+                              : DisabledButton(
+                                  text: "Found pets",
+                                  onPressed: () {
+                                    setState(() {
+                                      isLostPets = !isLostPets;
+                                    });
+                                    print(isLostPets);
+                                  },
+                                ),
+                          SizedBox(width: 12),
+                          isLostPets
+                              ? EnabledButton(text: "Lost pets")
+                              : DisabledButton(
+                                  text: "Lost pets",
+                                  onPressed: () {
+                                    setState(() {
+                                      isLostPets = !isLostPets;
+                                    });
+                                    print(isLostPets);
+                                  },
+                                ),
+                        ]),
+                  ),
+                  Expanded(
+                      child: GetFirestoreData(
+                          collection: 'lostfound', isLost: isLostPets))
+                ],
               )),
             )
           ],

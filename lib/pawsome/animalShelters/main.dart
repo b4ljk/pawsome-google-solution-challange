@@ -194,11 +194,14 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
 }
 
 class GetFirestoreData extends StatefulWidget {
-  GetFirestoreData({Key? key, required this.collection, this.child})
+  GetFirestoreData(
+      {Key? key, required this.collection, this.child, this.isLost = false})
       : super(key: key);
 
   final String collection;
   final dynamic child;
+  final bool isLost;
+
   @override
   State<GetFirestoreData> createState() => _GetDataState();
 }
@@ -241,13 +244,11 @@ class _GetDataState extends State<GetFirestoreData> {
     if (_documents.isEmpty) {
       querySnapshot = await FirebaseFirestore.instance
           .collection(widget.collection)
-          .orderBy('name')
           .limit(_batchSize)
           .get();
     } else {
       querySnapshot = await FirebaseFirestore.instance
           .collection(widget.collection)
-          .orderBy('name')
           .startAfterDocument(_documents.last)
           .limit(_batchSize)
           .get();
@@ -275,11 +276,35 @@ class _GetDataState extends State<GetFirestoreData> {
         }
         final document = _documents[index];
         print(document.data());
+        return feedmaker(document);
+      },
+    );
+  }
+
+  Widget feedmaker(document) {
+    print(widget.collection);
+    switch (widget.collection) {
+      case "pets":
+        print(widget.collection);
         return ShelterItem(
           document: document,
         );
-      },
-    );
+      case "lostfound":
+        print(widget.collection);
+        return Container(
+            child: LostAnimalCard(
+                lostAnimal: LostAnimal(
+                    name: "name",
+                    lostLocation: "lostLocation",
+                    phone: "phone",
+                    picture:
+                        "https://imagesvc.meredithcorp.io/v3/mm/image?q=60&c=sc&poi=%5B900%2C533%5D&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F12%2Fpomeranian-white-puppy-921029690-2000.jpg",
+                    lostDate: "lostDate",
+                    description: "description"),
+                isLost: widget.isLost));
+      default:
+        return Container();
+    }
   }
 }
 
