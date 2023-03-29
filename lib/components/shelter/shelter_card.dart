@@ -25,7 +25,6 @@ class ShelterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // print all items in documents
-    print(document.data());
 
     return Padding(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
@@ -60,7 +59,7 @@ class ShelterItem extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     AspectRatio(
-                      aspectRatio: 2.5,
+                      aspectRatio: 1.7,
                       child: Image.network(
                         shelterData.image,
                         fit: BoxFit.cover,

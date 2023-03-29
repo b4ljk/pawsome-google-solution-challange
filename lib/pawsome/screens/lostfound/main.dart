@@ -1,5 +1,6 @@
 import 'package:pawsome/components/calendar/calendar_popup.dart';
 import 'package:pawsome/components/my_elevated_button.dart';
+import 'package:pawsome/pawsome/animalShelters/main.dart';
 import 'package:pawsome/pawsome/screens/lostfound/animalcard.dart';
 import 'package:pawsome/pawsome/ui_view/body_measurement.dart';
 import 'package:pawsome/pawsome/ui_view/glass_view.dart';
@@ -61,7 +62,7 @@ class _VolunteeringState extends State<Volunteering>
   void initState() {
     CollectionReference users =
         FirebaseFirestore.instance.collection('shelters');
-    print(users);
+    // print(users);
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController!,
@@ -129,64 +130,46 @@ class _VolunteeringState extends State<Volunteering>
       color: PawsomeTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Column(
-          children: [
-            Stack(
-              children: <Widget>[
-                getAppBarUI(),
-                getMainListViewUI(),
-                SizedBox(
-                  height: MediaQuery.of(context).padding.bottom,
-                ),
-              ],
+        body: Stack(
+          children: <Widget>[
+            getAppBarUI(),
+            getMainListViewUI(),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom,
             ),
-            Container(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    !isLostPets
-                        ? EnabledButton(text: "Found pets")
-                        : DisabledButton(
-                            text: "Found pets",
-                            onPressed: () {
-                              setState(() {
-                                isLostPets = !isLostPets;
-                              });
-                              print(isLostPets);
-                            },
-                          ),
-                    SizedBox(width: 12),
-                    isLostPets
-                        ? EnabledButton(text: "Lost pets")
-                        : DisabledButton(
-                            text: "Lost pets",
-                            onPressed: () {
-                              setState(() {
-                                isLostPets = !isLostPets;
-                              });
-                              print(isLostPets);
-                            },
-                          ),
-                  ]),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: getAnimalsData().length,
-                      itemBuilder: (context, index) {
-                        return LostAnimalCard(
-                          isLost: isLostPets,
-                          lostAnimal: getAnimalsData()[index],
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
+            Padding(
+              padding: EdgeInsets.only(top: AppBar().preferredSize.height),
+              child: SafeArea(
+                  child: Container(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      !isLostPets
+                          ? EnabledButton(text: "Found pets")
+                          : DisabledButton(
+                              text: "Found pets",
+                              onPressed: () {
+                                setState(() {
+                                  isLostPets = !isLostPets;
+                                });
+                                print(isLostPets);
+                              },
+                            ),
+                      SizedBox(width: 12),
+                      isLostPets
+                          ? EnabledButton(text: "Lost pets")
+                          : DisabledButton(
+                              text: "Lost pets",
+                              onPressed: () {
+                                setState(() {
+                                  isLostPets = !isLostPets;
+                                });
+                                print(isLostPets);
+                              },
+                            ),
+                    ]),
+              )),
             )
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pawsome/components/shelter/shelter_card.dart';
 import 'package:pawsome/pawsome/animalShelters/petdetail.dart';
+import 'package:pawsome/pawsome/screens/lostfound/animalcard.dart';
 import 'package:pawsome/pawsome/screens/shelter/feed.dart';
 import 'package:pawsome/pawsome/ui_view/body_measurement.dart';
 import 'package:pawsome/pawsome/ui_view/glass_view.dart';
@@ -86,7 +87,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                 child: Padding(
               padding: EdgeInsets.only(
                   top: AppBar().preferredSize.height + 5, bottom: 35),
-              child: GetData(
+              child: GetFirestoreData(
                 collection: "pets",
               ),
             )),
@@ -192,16 +193,17 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   }
 }
 
-class GetData extends StatefulWidget {
-  GetData({Key? key, required this.collection}) : super(key: key);
+class GetFirestoreData extends StatefulWidget {
+  GetFirestoreData({Key? key, required this.collection, this.child})
+      : super(key: key);
 
   final String collection;
-
+  final dynamic child;
   @override
-  State<GetData> createState() => _GetDataState();
+  State<GetFirestoreData> createState() => _GetDataState();
 }
 
-class _GetDataState extends State<GetData> {
+class _GetDataState extends State<GetFirestoreData> {
   final ScrollController _scrollController = ScrollController();
   final int _batchSize = 10;
   List<DocumentSnapshot> _documents = [];
@@ -271,8 +273,8 @@ class _GetDataState extends State<GetData> {
           return Center(
               child: _isLoading ? CircularProgressIndicator() : SizedBox());
         }
-
         final document = _documents[index];
+        print(document.data());
         return ShelterItem(
           document: document,
         );
@@ -282,19 +284,19 @@ class _GetDataState extends State<GetData> {
 }
 
 class Shelters {
-  Shelters(
-      {required this.location,
-      required this.image,
-      required this.name,
-      required this.breed,
-      required this.phone,
-      required this.shelter_id});
+  Shelters({
+    required this.location,
+    required this.image,
+    required this.name,
+    required this.breed,
+    required this.phone,
+  });
 
   final String location;
   final String image;
   final String name;
   final String breed;
-  final String shelter_id;
+  // final String shelter_id;
   final String phone;
 
   factory Shelters.fromJson(Map<String, dynamic> json) {
@@ -303,7 +305,7 @@ class Shelters {
       image: json['image'],
       name: json['name'],
       breed: json['breed'],
-      shelter_id: json['shelter_id'],
+      // shelter_id: json['shelter_id'],
       phone: json['phone'],
     );
   }
@@ -314,7 +316,7 @@ class Shelters {
       'image': image,
       'name': name,
       'breed': breed,
-      'shelter_id': shelter_id,
+      // 'shelter_id': shelter_id,
       'phone': phone,
     };
   }
