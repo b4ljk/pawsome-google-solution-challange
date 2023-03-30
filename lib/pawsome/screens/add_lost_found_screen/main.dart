@@ -134,6 +134,7 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
               MyElevatedButton(
                   onPressed: () {
                     Firestore.lostAnimalRef.add(LostAnimal(
+                        isLost: false,
                         name: "test",
                         lostLocation: "test",
                         phone: "phone",

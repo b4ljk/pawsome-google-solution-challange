@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pawsome/hotel_booking/hotel_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,23 +8,26 @@ import 'package:pawsome/main.dart';
 import 'package:pawsome/pawsome/theming.dart';
 
 class LostAnimalCard extends StatelessWidget {
-  const LostAnimalCard({
-    Key? key,
-    this.animationController,
-    this.animation,
-    this.callback,
-    required this.lostAnimal,
-    required this.isLost,
-  }) : super(key: key);
+  LostAnimalCard(
+      {Key? key,
+      this.animationController,
+      this.animation,
+      this.callback,
+      required this.isLost,
+      required this.document})
+      : super(key: key);
 
   final VoidCallback? callback;
   final AnimationController? animationController;
   final Animation<double>? animation;
-  final LostAnimal lostAnimal;
   final bool isLost;
+  final DocumentSnapshot document;
+  LostAnimal get lostAnimal =>
+      LostAnimal.fromJson(document.data() as Map<String, dynamic>);
 
   @override
   Widget build(BuildContext context) {
+    print(document);
     return Padding(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
       child: InkWell(
@@ -198,20 +202,21 @@ class LostAnimalCard extends StatelessWidget {
 }
 
 class LostAnimal {
-  LostAnimal({
-    required this.name,
-    required this.lostLocation,
-    required this.phone,
-    required this.picture,
-    required this.lostDate,
-    required this.description,
-  });
+  LostAnimal(
+      {required this.name,
+      required this.lostLocation,
+      required this.phone,
+      required this.picture,
+      required this.lostDate,
+      required this.description,
+      required this.isLost});
   final String name;
   final lostLocation;
   final phone;
   final picture;
   final lostDate;
   final String description;
+  final bool isLost;
 
   LostAnimal.fromJson(Map<String, dynamic> json)
       : name = json['name'],
@@ -219,7 +224,8 @@ class LostAnimal {
         phone = json['phone'],
         picture = json['picture'],
         lostDate = json['lostDate'],
-        description = json['description'];
+        description = json['description'],
+        isLost = json['isLost'];
 
   Map<String, dynamic> toJson() => {
         'name': name,
@@ -228,5 +234,6 @@ class LostAnimal {
         'picture': picture,
         'lostDate': lostDate,
         'description': description,
+        'isLost': isLost
       };
 }

@@ -40,6 +40,7 @@ class _VolunteeringState extends State<Volunteering>
         picture:
             "https://scontent.fuln8-1.fna.fbcdn.net/v/t39.30808-6/336273520_196456646410655_7104023378553306563_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=Khv4FcQzu5sAX_fQvhr&_nc_ht=scontent.fuln8-1.fna&oh=00_AfA_hxdIKbl0BPt5evGwrBwT6n5q3wGq75Lp0e2HRk-Nog&oe=6425DF7C",
         lostDate: "1999/22/12",
+        isLost: true,
         description: "My man tried to run home")
   ];
   List<LostAnimal> foundanimal = [
@@ -50,6 +51,7 @@ class _VolunteeringState extends State<Volunteering>
         lostDate: "2023/12/23",
         phone: "99199119",
         lostLocation: "Ulaanbaatar",
+        isLost: false,
         picture:
             "https://scontent.fuln8-1.fna.fbcdn.net/v/t39.30808-6/335418226_1492717761132623_6255492581044566377_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=jxdYhdy85VcAX8MFUO8&_nc_ht=scontent.fuln8-1.fna&oh=00_AfBOjgjXVKEOJRPHnZY-Gx1_u7Rup2FmJ92_YhBbuEULLg&oe=64264604")
   ];
