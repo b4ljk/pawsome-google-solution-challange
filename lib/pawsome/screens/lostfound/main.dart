@@ -1,14 +1,7 @@
 import 'package:pawsome/components/calendar/calendar_popup.dart';
-import 'package:pawsome/components/my_elevated_button.dart';
 import 'package:pawsome/pawsome/animalShelters/main.dart';
 import 'package:pawsome/pawsome/screens/lostfound/animalcard.dart';
-import 'package:pawsome/pawsome/ui_view/body_measurement.dart';
-import 'package:pawsome/pawsome/ui_view/glass_view.dart';
-import 'package:pawsome/pawsome/ui_view/mediterranean_diet_view.dart';
-import 'package:pawsome/pawsome/ui_view/title_view.dart';
 import 'package:pawsome/pawsome/theming.dart';
-import 'package:pawsome/pawsome/animalShelters/meals_list_view.dart';
-import 'package:pawsome/pawsome/animalShelters/water_view.dart';
 import 'package:flutter/material.dart';
 import 'package:pawsome/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

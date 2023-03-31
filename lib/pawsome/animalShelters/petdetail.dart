@@ -5,8 +5,6 @@ import 'package:pawsome/pawsome/animalShelters/main.dart';
 import 'package:pawsome/pawsome/animalShelters/petadoptionform.dart';
 import 'package:pawsome/utils/hexColor.dart';
 
-import '../theming.dart';
-
 class PetDetail extends StatefulWidget {
   const PetDetail({
     Key? key,
@@ -85,7 +83,7 @@ class _PetDetailState extends State<PetDetail> {
               children: [
                 _buildBadge('2 Years', const Color(0xFFFFEBCD)),
                 _buildBadge(widget.shelterData.breed, const Color(0xFFE0CDFF)),
-                _buildBadge('Knows Sit, Stay', const Color(0xFFFFCDD6)),
+                _buildBadge('Knows Sit', const Color(0xFFFFCDD6)),
               ],
             ),
           ),
@@ -93,7 +91,8 @@ class _PetDetailState extends State<PetDetail> {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -145,7 +144,8 @@ class _PetDetailState extends State<PetDetail> {
           ),
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding:
+                  const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 8),
               child: MyElevatedButton(
                   onPressed: () {
                     Navigator.push(

@@ -1,10 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:pawsome/components/shelter/shelter_card.dart';
-import 'package:pawsome/components/shelter/shelter_data.dart';
-import 'package:pawsome/pawsome/ui_view/body_measurement.dart';
-import 'package:pawsome/pawsome/ui_view/glass_view.dart';
-import 'package:pawsome/pawsome/ui_view/mediterranean_diet_view.dart';
-import 'package:pawsome/pawsome/ui_view/title_view.dart';
 import 'package:pawsome/pawsome/theming.dart';
 import 'package:flutter/material.dart';
 
