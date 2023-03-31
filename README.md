@@ -12,3 +12,7 @@
 2. Navigate to the project directory using `cd pawsome-google-solution-challange`
 3. `flutter pub get` to install the dependencies
 4. `flutter run` to run the app
+
+## Possible errors
+1. In debug mode when you try to sign in with google, it will not work. Because 
+in order to sign in you need to add, SHA1 fingerprint to firebase.
