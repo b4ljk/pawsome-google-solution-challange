@@ -150,7 +150,6 @@ class _VolunteeringState extends State<Volunteering>
                                     setState(() {
                                       isLostPets = !isLostPets;
                                     });
-                                    print(isLostPets);
                                   },
                                 ),
                           SizedBox(width: 12),
@@ -162,7 +161,6 @@ class _VolunteeringState extends State<Volunteering>
                                     setState(() {
                                       isLostPets = !isLostPets;
                                     });
-                                    print(isLostPets);
                                   },
                                 ),
                         ]),

@@ -267,17 +267,14 @@ class _GetDataState extends State<GetFirestoreData> {
               child: _isLoading ? CircularProgressIndicator() : SizedBox());
         }
         final document = _documents[index];
-        print(document.data());
         return feedmaker(document);
       },
     );
   }
 
   Widget feedmaker(document) {
-    print(widget.collection);
     switch (widget.collection) {
       case "pets":
-        print(widget.collection);
         return ShelterItem(
           document: document,
         );

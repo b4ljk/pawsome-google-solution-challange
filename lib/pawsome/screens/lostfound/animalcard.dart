@@ -27,7 +27,6 @@ class LostAnimalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(document);
     return Padding(
       padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
       child: InkWell(

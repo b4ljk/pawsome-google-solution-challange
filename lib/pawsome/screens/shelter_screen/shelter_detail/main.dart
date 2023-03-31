@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pawsome/components/calendar/calendar_popup.dart';
-import 'package:pawsome/pawsome/screens/shelter/feed.dart';
-import 'package:pawsome/pawsome/screens/lostfound/main.dart';
+import 'package:pawsome/pawsome/screens/shelter_screen/feed.dart';
 
 import '../../../../components/my_elevated_button.dart';
 import '../../../theming.dart';
