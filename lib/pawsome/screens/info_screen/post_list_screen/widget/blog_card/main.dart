@@ -41,7 +41,7 @@ class BlogCard extends StatelessWidget {
             child: Image.network(
               image,
               fit: BoxFit.cover,
-              height: 150,
+              height: 220,
               width: double.infinity,
             ),
           ),

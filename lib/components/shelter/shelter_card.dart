@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pawsome/components/calendar/pawCalTheme.dart';
 import 'package:pawsome/components/shelter/shelter_data.dart';
-import 'package:pawsome/hotel_booking/hotel_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pawsome/pawsome/animalShelters/main.dart';
@@ -66,7 +66,7 @@ class ShelterItem extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      color: HotelAppTheme.buildLightTheme().backgroundColor,
+                      color: PawCalTheme.buildLightTheme().backgroundColor,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +99,7 @@ class ShelterItem extends StatelessWidget {
                                         Icon(
                                           FontAwesomeIcons.mapPin,
                                           size: 12,
-                                          color: HotelAppTheme.buildLightTheme()
+                                          color: PawCalTheme.buildLightTheme()
                                               .primaryColor,
                                         ),
                                         Expanded(
@@ -161,7 +161,7 @@ class ShelterItem extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.favorite_border,
-                          color: HotelAppTheme.buildLightTheme().primaryColor,
+                          color: PawCalTheme.buildLightTheme().primaryColor,
                         ),
                       ),
                     ),

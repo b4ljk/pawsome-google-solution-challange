@@ -35,7 +35,7 @@ class _PostState extends State<Post> {
               SizedBox(
                 width: 10,
               ),
-              Text("sisi",
+              Text("Terry",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -47,12 +47,21 @@ class _PostState extends State<Post> {
           ),
           Image.network(
               "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRPMKnq00NF_T7RusUNeLrSazRZM0S5O8_AOcw2iBTmYTxd3Q7uXf0sW41odpAKqSblKDMUMHGb8nZRo9g"),
-          Row(children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             IconButton(
               onPressed: () {},
               icon: FaIcon(FontAwesomeIcons.heart),
             ),
-            Text("Bestest doggo in the tosswn"),
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Text(
+                "More about Terry",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ]),
         ],
       ),

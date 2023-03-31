@@ -303,13 +303,13 @@ class _GetDataState extends State<GetFirestoreData> {
 }
 
 class Shelters {
-  Shelters({
-    required this.location,
-    required this.image,
-    required this.name,
-    required this.breed,
-    required this.phone,
-  });
+  Shelters(
+      {required this.location,
+      required this.image,
+      required this.name,
+      required this.breed,
+      required this.phone,
+      required this.description});
 
   final String location;
   final String image;
@@ -317,16 +317,17 @@ class Shelters {
   final String breed;
   // final String shelter_id;
   final String phone;
+  final String description;
 
   factory Shelters.fromJson(Map<String, dynamic> json) {
     return Shelters(
-      location: json['location'],
-      image: json['image'],
-      name: json['name'],
-      breed: json['breed'],
-      // shelter_id: json['shelter_id'],
-      phone: json['phone'],
-    );
+        location: json['location'],
+        image: json['image'],
+        name: json['name'],
+        breed: json['breed'],
+        // shelter_id: json['shelter_id'],
+        phone: json['phone'],
+        description: json['description']);
   }
 
   Map<String, dynamic> toJson() {
@@ -337,6 +338,7 @@ class Shelters {
       'breed': breed,
       // 'shelter_id': shelter_id,
       'phone': phone,
+      'description': description
     };
   }
 }

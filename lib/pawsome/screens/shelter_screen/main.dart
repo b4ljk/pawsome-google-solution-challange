@@ -15,21 +15,21 @@ class _ShelterScreenState extends State<ShelterScreen> {
   final List<Map<String, String>> shelters = [
     {
       'logo':
-          'https://cdn.greensoft.mn/cache/images/b/6/c/5/a/b6c5a6a01360b10aab5565b2865b79522dcbbfa1.jpg',
-      'name': 'Example Shelter 1',
-      'location': 'New York, NY',
+          'https://scontent.fuln8-1.fna.fbcdn.net/v/t39.30808-6/289176957_3180596468846018_9080591028713012960_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=gefHEOBmk1MAX8_1G_X&_nc_ht=scontent.fuln8-1.fna&oh=00_AfDq76u9jtlZPguwlhl7bU-xSJDp1AQrPLEY3QeOZYaHRA&oe=642B10A7',
+      'name': 'Aztai savar NGO',
+      'location': 'Ulaanbaatar, Mongolia',
     },
     {
       'logo':
           'https://cdn.greensoft.mn/cache/images/b/6/c/5/a/b6c5a6a01360b10aab5565b2865b79522dcbbfa1.jpg',
-      'name': 'Example Shelter 2',
-      'location': 'Los Angeles, CA',
+      'name': 'UB shelter NGO',
+      'location': 'Khovd, Mongolia',
     },
     {
       'logo':
-          'https://cdn.greensoft.mn/cache/images/b/6/c/5/a/b6c5a6a01360b10aab5565b2865b79522dcbbfa1.jpg',
-      'name': 'Example Shelter 3',
-      'location': 'Chicago, IL',
+          'https://www.shutterstock.com/image-vector/logo-dogs-cats-260nw-1190098948.jpg',
+      'name': 'Amitnii uur',
+      'location': 'Erdenet, Mongolia',
     },
   ];
 

@@ -96,21 +96,13 @@ class _HomeDrawerState extends State<HomeDrawer> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 110,
-                height: 110,
+                width: double.infinity,
+                height: 25,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(75),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('assets/images/logo.jpg'),
+                    image: AssetImage('assets/images/logo.png'),
                   ),
-                ),
-              ),
-              Text(
-                'Pawsome',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(
@@ -190,7 +182,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                                     fit: BoxFit.cover,
                                   )
                                 : Image.asset(
-                                    'assets/images/logo.jpg',
+                                    'assets/images/logo.png',
                                     fit: BoxFit.cover,
                                   ),
                           ),

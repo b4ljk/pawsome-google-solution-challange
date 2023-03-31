@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:pawsome/hotel_booking/hotel_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pawsome/components/calendar/pawCalTheme.dart';
 import 'package:pawsome/main.dart';
 import 'package:pawsome/pawsome/theming.dart';
 
@@ -58,7 +58,7 @@ class LostAnimalCard extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      color: HotelAppTheme.buildLightTheme().backgroundColor,
+                      color: PawCalTheme.buildLightTheme().backgroundColor,
                       child: Column(
                         children: [
                           Row(

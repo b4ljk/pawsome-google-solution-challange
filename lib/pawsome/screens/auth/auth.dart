@@ -152,23 +152,22 @@ class _AuthGateState extends State<AuthGate> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: 110,
-                        height: 110,
+                        width: double.infinity,
+                        height: 45,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(75),
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage('assets/images/logo.jpg'),
+                            image: AssetImage('assets/images/logo.png'),
                           ),
                         ),
                       ),
-                      Text(
-                        'Pawsome',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      // Text(
+                      //   'Pawsome',
+                      //   style: TextStyle(
+                      //     fontSize: 20,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                       Visibility(
                         visible: error.isNotEmpty,
                         child: MaterialBanner(

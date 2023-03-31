@@ -11,24 +11,25 @@ class PostListScreen extends StatefulWidget {
 class _PostListScreenState extends State<PostListScreen> {
   final List<Map<String, dynamic>> _blogs = [
     {
-      'title': 'How to cut your dogs ball off?',
-      'summary': '',
-      'date': 'March 23, 2023',
-      'tags': ['Lorem', 'Ipsum', 'Dolor'],
-      'image':
-          'https://firebasestorage.googleapis.com/v0/b/pawsome-59b88.appspot.com/o/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg?alt=media&token=9d7b80f8-b97a-451b-b1bc-ee1417f21e57',
-    },
-    {
-      'title': 'Lorem Ipsum Dolor Sit Amet',
+      'title': 'How groom your dog ?',
       'summary':
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae suscipit justo. Nulla facilisi. Nam eget eleifend lectus. Nam efficitur velit nec mi luctus venenatis.',
       'date': 'March 23, 2023',
       'tags': ['Lorem', 'Ipsum', 'Dolor'],
       'image':
-          'https://firebasestorage.googleapis.com/v0/b/pawsome-59b88.appspot.com/o/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg?alt=media&token=9d7b80f8-b97a-451b-b1bc-ee1417f21e57',
+          'https://bpanimalhospital.com/wp-content/uploads/shutterstock_1547371985.jpg',
     },
     {
-      'title': 'Lorem Ipsum Dolor Sit Amet',
+      'title': 'The Benefits of Regular Exercise for Your Furry Friend',
+      'summary':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae suscipit justo. Nulla facilisi. Nam eget eleifend lectus. Nam efficitur velit nec mi luctus venenatis.',
+      'date': 'March 23, 2023',
+      'tags': ['Lorem', 'Ipsum', 'Dolor'],
+      'image':
+          'https://i0.wp.com/twoplusdogs.co.uk/wp-content/uploads/2020/12/dog.jpg?fit=1000%2C664&ssl=1',
+    },
+    {
+      'title': 'Traveling with Pets: Tips and Tricks for a Stress-Free Trip',
       'summary':
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae suscipit justo. Nulla facilisi. Nam eget eleifend lectus. Nam efficitur velit nec mi luctus venenatis.',
       'date': 'March 23, 2023',

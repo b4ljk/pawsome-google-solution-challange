@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pawsome/components/my_elevated_button.dart';
 import 'package:pawsome/pawsome/animalShelters/main.dart';
+import 'package:pawsome/pawsome/animalShelters/petadoptionform.dart';
 import 'package:pawsome/utils/hexColor.dart';
 
 import '../theming.dart';
@@ -18,12 +19,6 @@ class PetDetail extends StatefulWidget {
 }
 
 class _PetDetailState extends State<PetDetail> {
-  final List<String> _images = [
-    'https://firebasestorage.googleapis.com/v0/b/pawsome-59b88.appspot.com/o/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg?alt=media&token=9d7b80f8-b97a-451b-b1bc-ee1417f21e57',
-    'https://firebasestorage.googleapis.com/v0/b/pawsome-59b88.appspot.com/o/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg?alt=media&token=9d7b80f8-b97a-451b-b1bc-ee1417f21e57',
-    'https://firebasestorage.googleapis.com/v0/b/pawsome-59b88.appspot.com/o/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg?alt=media&token=9d7b80f8-b97a-451b-b1bc-ee1417f21e57',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,17 +29,12 @@ class _PetDetailState extends State<PetDetail> {
             height: MediaQuery.of(context).size.height * 0.4,
             child: Stack(
               children: [
-                PageView.builder(
-                  itemCount: _images.length,
-                  onPageChanged: (index) {
-                    setState(() {});
-                  },
-                  itemBuilder: (context, index) {
-                    return Image.network(
-                      _images[index],
-                      fit: BoxFit.cover,
-                    );
-                  },
+                SizedBox(
+                  width: double.infinity,
+                  child: Image.network(
+                    widget.shelterData.image,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 SafeArea(
                   child: Padding(
@@ -72,7 +62,7 @@ class _PetDetailState extends State<PetDetail> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Buddy',
+                  widget.shelterData.name,
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -82,18 +72,24 @@ class _PetDetailState extends State<PetDetail> {
               ],
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //     children: [
-          //       _buildBadge('2 Years', const Color(0xFFFFEBCD)),
-          //       _buildBadge('25 Lbs', const Color(0xFFE0CDFF)),
-          //       _buildBadge('Knows Sit, Stay', const Color(0xFFFFCDD6)),
-          //     ],
-          //   ),
-          // ),
-          // const SizedBox(height: 20),
+          SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Wrap(
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              alignment: WrapAlignment.start,
+              spacing: 5,
+              runSpacing: 5,
+              children: [
+                _buildBadge('2 Years', const Color(0xFFFFEBCD)),
+                _buildBadge(widget.shelterData.breed, const Color(0xFFE0CDFF)),
+                _buildBadge('Knows Sit, Stay', const Color(0xFFFFCDD6)),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -110,8 +106,8 @@ class _PetDetailState extends State<PetDetail> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Text(
-                      'Buddy is a golden retriever who loves to play fetch and go on long walks. He is a sweet dog who loves attention and will make a great addition to any family.',
+                    Text(
+                      widget.shelterData.description,
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
@@ -124,6 +120,14 @@ class _PetDetailState extends State<PetDetail> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: GetHex("#6A88E5"),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      widget.shelterData.phone,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -143,7 +147,14 @@ class _PetDetailState extends State<PetDetail> {
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: MyElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PetAdoptionForm(),
+                      ),
+                    );
+                  },
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

@@ -1,7 +1,7 @@
 import 'package:pawsome/main.dart';
 import 'package:flutter/material.dart';
 
-class HotelAppTheme {
+class PawCalTheme {
   static TextTheme _buildTextTheme(TextTheme base) {
     const String fontName = 'WorkSans';
     return base.copyWith(
