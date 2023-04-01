@@ -143,19 +143,19 @@ class LostAnimalCard extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 16, bottom: 8),
-                                child: Text(
-                                    lostAnimal.description.substring(
-                                            0,
-                                            min(lostAnimal.description.length,
-                                                180)) +
-                                        "...",
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        color:
-                                            Colors.blueGrey.withOpacity(0.9))),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 16, bottom: 8),
+                                  child: Text(lostAnimal.description,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                      softWrap: false,
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.blueGrey
+                                              .withOpacity(0.9))),
+                                ),
                               ),
                             ],
                           ),

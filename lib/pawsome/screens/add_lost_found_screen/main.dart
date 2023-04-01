@@ -27,7 +27,7 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
   final _locationController = TextEditingController();
   final _descriptionController = TextEditingController();
   final _picker = ImagePicker();
-  bool isLost = false;
+  bool isLost = true;
   int initialIndex = 0;
   DateTime? _selectedDate = DateTime.now();
   XFile? _imageFile;
