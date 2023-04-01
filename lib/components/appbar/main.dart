@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pawsome/main.dart';
 import 'package:pawsome/pawsome/theming.dart';
 
 PreferredSizeWidget customAppbar(
@@ -20,7 +21,7 @@ PreferredSizeWidget customAppbar(
       ),
     ),
     centerTitle: true,
-    backgroundColor: Color(0xCC2633C5),
+    backgroundColor: HexColor("#6A88E5"),
     elevation: 0.0,
   );
 }
