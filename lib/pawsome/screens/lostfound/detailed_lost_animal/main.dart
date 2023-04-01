@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pawsome/components/appbar/main.dart';
 import 'package:pawsome/pawsome/screens/lostfound/animalcard.dart';
 
@@ -34,25 +35,55 @@ class LostAnimalDetailScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     SizedBox(height: 8.0),
-                    Text(
-                      'Lost Date: ${lostAnimal.lostDate}',
-                      style: Theme.of(context).textTheme.subtitle1,
+                    Row(
+                      children: [
+                        Text(
+                          "Lost Date:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          ' ${lostAnimal.lostDate}',
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
+                      ],
                     ),
                     SizedBox(height: 8.0),
-                    Text(
-                      'Location: ${lostAnimal.lostLocation}',
-                      style: Theme.of(context).textTheme.subtitle1,
+                    Row(
+                      children: [
+                        Text(
+                          "Location:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          ' ${lostAnimal.lostLocation}',
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
+                      ],
                     ),
                     SizedBox(height: 8.0),
-                    Text(
-                      'Phone: ${lostAnimal.phone}',
-                      style: Theme.of(context).textTheme.subtitle1,
+                    Row(
+                      children: [
+                        Text(
+                          "Contact:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          ' ${lostAnimal.phone}',
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
+                      ],
                     ),
                     SizedBox(height: 16.0),
-                    Text(
-                      'Description:',
-                      style: Theme.of(context).textTheme.subtitle1,
-                    ),
+                    Text('Description:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        )),
                     SizedBox(height: 8.0),
                     Text(
                       lostAnimal.description,
