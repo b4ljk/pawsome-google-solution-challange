@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pawsome/components/calendar/pawCalTheme.dart';
 import 'package:pawsome/main.dart';
+import 'package:pawsome/pawsome/screens/lostfound/detailed_lost_animal/main.dart';
 import 'package:pawsome/pawsome/theming.dart';
 
 class LostAnimalCard extends StatelessWidget {
@@ -12,12 +13,10 @@ class LostAnimalCard extends StatelessWidget {
       {Key? key,
       this.animationController,
       this.animation,
-      this.callback,
       required this.isLost,
       required this.document})
       : super(key: key);
 
-  final VoidCallback? callback;
   final AnimationController? animationController;
   final Animation<double>? animation;
   final bool isLost;
@@ -31,7 +30,15 @@ class LostAnimalCard extends StatelessWidget {
       padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
       child: InkWell(
         splashColor: Colors.transparent,
-        onTap: callback,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => LostAnimalDetailScreen(
+                      lostAnimal: lostAnimal,
+                    )),
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
