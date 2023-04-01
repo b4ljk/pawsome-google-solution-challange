@@ -167,7 +167,8 @@ class _VolunteeringState extends State<Volunteering>
                   ),
                   Expanded(
                       child: GetFirestoreData(
-                          collection: 'lostfound', isLost: isLostPets))
+                          collection: 'lostfound', isLost: isLostPets)),
+                  SizedBox(height: 60)
                 ],
               )),
             )

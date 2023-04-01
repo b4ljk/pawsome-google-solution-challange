@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pawsome/components/calendar/calendar_popup.dart';
 import 'package:pawsome/pawsome/screens/shelter_screen/feed.dart';
+import 'package:pawsome/pawsome/screens/shelter_screen/shelter_detail/successtoast.dart';
 
 import '../../../../components/my_elevated_button.dart';
 import '../../../theming.dart';
@@ -22,26 +24,42 @@ class _ShelterDetailScreenState extends State<ShelterDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: 48, left: 8, right: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
+            SafeArea(
+              child: Padding(
+                padding: EdgeInsets.only(top: 12, left: 8, right: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.white,
+                      ),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: FaIcon(FontAwesomeIcons.chevronLeft),
+                      ),
                     ),
-                    child: Icon(Icons.pets),
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "UB shelter",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                ],
+                    SizedBox(width: 20),
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: Icon(Icons.pets),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "UB shelter",
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -133,6 +151,9 @@ class _ShelterDetailScreenState extends State<ShelterDetailScreen> {
             endDate = endData;
           });
           print([startData, endData]);
+          final toast = successToast(
+              "Your request is successfully sent to the shelter. We will contact you soon.");
+          ScaffoldMessenger.of(context).showSnackBar(toast);
         },
         onCancelClick: () {},
       ),

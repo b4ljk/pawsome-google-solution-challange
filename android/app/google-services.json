@@ -7,12 +7,56 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:960488407399:android:da0c2961c268d1c377afc2",
+        "android_client_info": {
+          "package_name": "com.example.new_pawsome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960488407399-d3bmoj2b89js174dsmugqh0dlvcm03e2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPpC1KtIlupw6S5x3kusouZ3u6LueeNuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960488407399-d3bmoj2b89js174dsmugqh0dlvcm03e2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "960488407399-9shbovmrocmkbvnaj2bf5aj0pkhpt1i0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bestFlutterUiTemplates"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:960488407399:android:d2485180f6ed080b77afc2",
         "android_client_info": {
           "package_name": "com.example.pawsome"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "960488407399-61vkcqr08rd252di3lpg56jpn768bgh6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pawsome",
+            "certificate_hash": "84cba0835463cc8932f966f2cfae49251072d269"
+          }
+        },
         {
           "client_id": "960488407399-d3bmoj2b89js174dsmugqh0dlvcm03e2.apps.googleusercontent.com",
           "client_type": 3

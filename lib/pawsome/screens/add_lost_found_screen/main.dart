@@ -1,9 +1,13 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pawsome/firebase/firestore.dart';
 import 'package:pawsome/pawsome/screens/lostfound/animalcard.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 import '../../../components/my_elevated_button.dart';
 import '../../theming.dart';
@@ -18,20 +22,45 @@ class AddLostFoundPetScreen extends StatefulWidget {
 class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
   final _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _locationController = TextEditingController();
   final _descriptionController = TextEditingController();
   final _picker = ImagePicker();
+  bool isLost = false;
+  int initialIndex = 0;
   XFile? _imageFile;
+  final storageRef = FirebaseStorage.instance.ref();
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
+
     setState(() {
       _imageFile = pickedFile;
     });
   }
 
-  void _onSubmit() {
+  void _onSubmit() async {
     if (_formKey.currentState!.validate()) {
-      // Perform submission logic here (e.g. upload image to server, save form data to database)
+      final pickedFile = _imageFile;
+      if (pickedFile == null) return;
+      final imageRef =
+          storageRef.child('images/${DateTime.now()}${pickedFile.name}.png');
+      String filePath = pickedFile.path;
+      File file = File(filePath);
+      final uploadTask = imageRef.putFile(file);
+      final snapshot = await uploadTask.whenComplete(() => null);
+      final downloadUrl = await snapshot.ref.getDownloadURL();
+      print(downloadUrl);
+      Firestore.lostAnimalRef.add(LostAnimal(
+        isLost: isLost,
+        name: _titleController.text,
+        lostLocation: _locationController.text,
+        phone: _phoneController.text,
+        picture: downloadUrl,
+        lostDate: "lostDate",
+        description: _descriptionController.text,
+      ));
+
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Pet info submitted!')),
       );
@@ -58,7 +87,7 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
         child: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
                 onTap: () async {
@@ -105,12 +134,63 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
               TextFormField(
                 controller: _titleController,
                 decoration: const InputDecoration(
-                  labelText: 'Title',
+                  labelText: 'Name',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value?.isEmpty ?? true) {
-                    return 'Title cannot be empty';
+                    return 'Name cannot be empty';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _phoneController,
+                decoration: const InputDecoration(
+                  labelText: 'Phone',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Name cannot be empty';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 16),
+              ToggleSwitch(
+                minWidth: 140.0,
+                initialLabelIndex: initialIndex,
+                cornerRadius: 12.0,
+                activeFgColor: Colors.white,
+                inactiveBgColor: Colors.grey,
+                inactiveFgColor: Colors.white,
+                totalSwitches: 2,
+                labels: ['I lost pet', 'I found pet'],
+                activeBgColors: [
+                  [Colors.pink],
+                  [Colors.blue],
+                ],
+                onToggle: (index) {
+                  print('switched to: $index');
+                  setState(() {
+                    initialIndex = index!;
+                    isLost = index == 0;
+                  });
+                },
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _locationController,
+                decoration: InputDecoration(
+                  labelText:
+                      'Where did you ${isLost ? "lose" : "find"} the pet',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Name cannot be empty';
                   }
                   return null;
                 },
@@ -132,16 +212,7 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
               ),
               const SizedBox(height: 16),
               MyElevatedButton(
-                  onPressed: () {
-                    Firestore.lostAnimalRef.add(LostAnimal(
-                        isLost: false,
-                        name: "test",
-                        lostLocation: "test",
-                        phone: "phone",
-                        picture: "picture",
-                        lostDate: "lostDate",
-                        description: "description"));
-                  },
+                  onPressed: _onSubmit,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
