@@ -35,7 +35,7 @@ class LostAnimalDetailScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 8.0),
                     Text(
-                      'Lost Date: ',
+                      'Lost Date: ${lostAnimal.lostDate}',
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                     SizedBox(height: 8.0),

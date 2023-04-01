@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,6 +29,7 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
   final _picker = ImagePicker();
   bool isLost = false;
   int initialIndex = 0;
+  DateTime? _selectedDate = DateTime.now();
   XFile? _imageFile;
   final storageRef = FirebaseStorage.instance.ref();
 
@@ -40,6 +42,16 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
   }
 
   void _onSubmit() async {
+    if (_titleController.text.isEmpty ||
+        _phoneController.text.isEmpty ||
+        _locationController.text.isEmpty ||
+        _descriptionController.text.isEmpty ||
+        _imageFile == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please fill in all the fields')),
+      );
+      return;
+    }
     if (_formKey.currentState!.validate()) {
       final pickedFile = _imageFile;
       if (pickedFile == null) return;
@@ -57,7 +69,7 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
         lostLocation: _locationController.text,
         phone: _phoneController.text,
         picture: downloadUrl,
-        lostDate: "lostDate",
+        lostDate: _selectedDate.toString().substring(0, 10),
         description: _descriptionController.text,
       ));
 
@@ -72,6 +84,16 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
     _titleController.dispose();
     _descriptionController.dispose();
     super.dispose();
+  }
+
+  Future<DateTime?> selectDate(BuildContext context) async {
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+    return selectedDate;
   }
 
   @override
@@ -146,6 +168,7 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                keyboardType: TextInputType.phone,
                 controller: _phoneController,
                 decoration: const InputDecoration(
                   labelText: 'Phone',
@@ -195,6 +218,32 @@ class _AddLostFoundPetScreenState extends State<AddLostFoundPetScreen> {
                   return null;
                 },
               ),
+              const SizedBox(height: 16),
+              TextButton(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsets>(
+                      const EdgeInsets.all(0),
+                    ),
+                  ),
+                  onPressed: () async {
+                    _selectedDate = await selectDate(context);
+                    setState(() {});
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(4)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        children: [
+                          Text("${isLost ? "Lost" : "Found"} Date: "),
+                          Text(_selectedDate.toString().substring(0, 10))
+                        ],
+                      ),
+                    ),
+                  )),
               const SizedBox(height: 16),
               TextFormField(
                 controller: _descriptionController,
