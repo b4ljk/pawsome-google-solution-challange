@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pawsome/pawsome/screens/info_screen/post_list_screen/widget/blog_detail/main.dart';
 
 class BlogCard extends StatelessWidget {
   final String image;
@@ -18,98 +19,108 @@ class BlogCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AnimalCareScreen()),
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              blurRadius: 5,
+              offset: const Offset(0, 3),
             ),
-            child: Image.network(
-              image,
-              fit: BoxFit.cover,
-              height: 220,
-              width: double.infinity,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+              child: Image.network(
+                image,
+                fit: BoxFit.cover,
+                height: 220,
+                width: double.infinity,
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              summary,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.calendar_today,
-                  size: 16,
-                  color: Colors.grey.withOpacity(0.7),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
                 ),
-                const SizedBox(width: 4),
-                Text(
-                  date,
-                  style: TextStyle(
+              ),
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                summary,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.calendar_today,
+                    size: 16,
                     color: Colors.grey.withOpacity(0.7),
-                    fontSize: 14,
                   ),
-                ),
-                const SizedBox(width: 8),
-                Icon(
-                  Icons.local_offer,
-                  size: 16,
-                  color: Colors.grey.withOpacity(0.7),
-                ),
-                const SizedBox(width: 4),
-                Wrap(
-                  spacing: 4,
-                  children: tags.map((tag) {
-                    return Chip(
-                      backgroundColor: Colors.grey.withOpacity(0.2),
-                      label: Text(
-                        tag,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.withOpacity(0.7),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ],
+                  const SizedBox(width: 4),
+                  Text(
+                    date,
+                    style: TextStyle(
+                      color: Colors.grey.withOpacity(0.7),
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Icon(
+                    Icons.local_offer,
+                    size: 16,
+                    color: Colors.grey.withOpacity(0.7),
+                  ),
+                  const SizedBox(width: 4),
+                  Expanded(
+                    child: Wrap(
+                      spacing: 4,
+                      children: tags.map((tag) {
+                        return Chip(
+                          backgroundColor: Colors.grey.withOpacity(0.2),
+                          label: Text(
+                            tag,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey.withOpacity(0.7),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-        ],
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }

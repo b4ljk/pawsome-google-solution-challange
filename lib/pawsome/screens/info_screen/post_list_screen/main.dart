@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pawsome/components/appbar/main.dart';
 import 'package:pawsome/pawsome/screens/info_screen/post_list_screen/widget/blog_card/main.dart';
 
 class PostListScreen extends StatefulWidget {
@@ -43,27 +44,21 @@ class _PostListScreenState extends State<PostListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: customAppbar("Blogs", context),
       body: Column(
         children: [
           SafeArea(
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 14.0, bottom: 4),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.white,
-                    ),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: FaIcon(FontAwesomeIcons.chevronLeft),
-                    ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Expanded(
