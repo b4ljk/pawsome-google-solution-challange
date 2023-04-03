@@ -24,6 +24,6 @@ in order to sign in you need to add, SHA1 fingerprint to firebase.
 
 ## Our Goals
 
-No Poverty               | Zero Hunger             |  Reduced Inequalities
+Life on land               | Life below water             |  Good health and well being
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Life on land](https://developers.google.com/static/community/images/gdsc-solution-challenge/goal-15_480.png)|![Life below water](https://developers.google.com/static/community/images/gdsc-solution-challenge/goal-14_480.png)|![Good health and well being](https://developers.google.com/static/community/images/gdsc-solution-challenge/goal-03_480.png)
