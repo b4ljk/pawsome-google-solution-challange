@@ -17,6 +17,12 @@
 3. `flutter pub get` to install the dependencies
 4. `flutter run` to run the app
 
+### if you are using macOS
+
+1. `open -a Simulator` to open the simulator
+2. `cd ios && pod install && cd ..`
+3. `flutter run` to run the app
+
 ## Possible errors
 
 1. In debug mode when you try to sign in with google, it will not work. Because
